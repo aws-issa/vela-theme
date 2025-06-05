@@ -1,0 +1,212 @@
+{%- liquid
+  assign bg = section.settings.bg_color | default: '#ffffff'
+  assign image_align = section.settings.image_alignment | default: 'center'
+-%}
+
+<section id="AnimatedDrop-{{ section.id }}" class="animated-drop-section" style="--ad-bg: {{ bg }};">
+  <style>
+    #AnimatedDrop-{{ section.id }} { position: relative; background: var(--ad-bg); }
+    #AnimatedDrop-{{ section.id }} .animated-drop__inner{max-width:var(--page-width,1200px);margin:0 auto;padding:0 1.5rem 6rem;position:relative;z-index:1}
+    #AnimatedDrop-{{ section.id }} .animated-drop__wrapper{position:absolute;top:0;left:0;width:100%;display:flex;pointer-events:none;z-index:2}
+    .animated-drop__wrapper--left{justify-content:flex-start}.animated-drop__wrapper--center{justify-content:center}.animated-drop__wrapper--right{justify-content:flex-end}
+    #AnimatedDrop-{{ section.id }} .animated-drop__image{max-width:480px;width:100%;display:block}
+    #AnimatedDrop-{{ section.id }} .animated-drop__blocks{display:flex;flex-direction:column;gap:3rem}
+
+    .block-pos-left  {margin-left:0;margin-right:auto}
+    .block-pos-center{margin-left:auto;margin-right:auto}
+    .block-pos-right {margin-left:auto;margin-right:0}
+    .block-align-left{text-align:left}.block-align-center{text-align:center}.block-align-right{text-align:right}
+
+    .ad-img-with-text{display:flex;flex-direction:column;gap:1rem}
+    .ad-img-with-text__image{max-width:100%;height:auto}
+    .ad-img-with-text--left  {align-items:flex-start}
+    .ad-img-with-text--center{align-items:center}
+    .ad-img-with-text--right {align-items:flex-end}
+  </style>
+
+  <div class="animated-drop__wrapper animated-drop__wrapper--{{ image_align }}">
+    {%- if section.settings.drop_image != blank -%}
+      <img
+        src="{{ section.settings.drop_image | image_url: width: 800 }}"
+        alt="{{ section.settings.drop_image.alt | escape }}"
+        width="{{ section.settings.drop_image.width }}"
+        height="{{ section.settings.drop_image.height }}"
+        loading="lazy"
+        class="animated-drop__image"
+      >
+    {%- endif -%}
+  </div>
+
+  <div class="animated-drop__inner">
+    {%- if section.blocks.size > 0 -%}
+      <div class="animated-drop__blocks">
+        {%- for block in section.blocks -%}
+          <div
+            class="animated-drop__block block-pos-{{ block.settings.position }} block-align-{{ block.settings.alignment }}"
+            {{ block.shopify_attributes }}
+          >
+            {%- case block.type -%}
+              {%- when 'richtext' -%}
+                {{ block.settings.text }}
+              {%- when 'image_with_text' -%}
+                <div class="ad-img-with-text ad-img-with-text--{{ block.settings.alignment }}">
+                  {%- if block.settings.image != blank -%}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 600 }}"
+                      alt="{{ block.settings.image.alt | escape }}"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
+                      loading="lazy"
+                      class="ad-img-with-text__image"
+                    >
+                  {%- endif -%}
+                  {%- if block.settings.text != blank -%}
+                    <div class="ad-img-with-text__text rte">{{ block.settings.text }}</div>
+                  {%- endif -%}
+                </div>
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <script>
+    (function () {
+      function l(s) {
+        return new Promise(function (r, e) {
+          var t = document.createElement('script');
+          t.src = s;
+          t.onload = r;
+          t.onerror = e;
+          document.head.appendChild(t);
+        });
+      }
+      function i() {
+        if (!window.gsap || !window.ScrollTrigger) {
+          console.error('GSAP/ScrollTrigger missing');
+          return;
+        }
+        gsap.registerPlugin(ScrollTrigger);
+        const s = document.getElementById('AnimatedDrop-{{ section.id }}');
+        if (!s) return;
+        const w = s.querySelector('.animated-drop__wrapper');
+        if (!w) return;
+        gsap.fromTo(
+          w,
+          { yPercent: -60, scale: 0.85, opacity: 0 },
+          {
+            yPercent: 0,
+            scale: 1,
+            opacity: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: s,
+              start: 'top center',
+              end: '+=' + s.offsetHeight,
+              scrub: true,
+              pin: w,
+            },
+          }
+        );
+      }
+      if (window.gsap && window.ScrollTrigger) {
+        i();
+      } else {
+        Promise.all([
+          l('https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js'),
+          l('https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js'),
+        ])
+          .then(i)
+          .catch(function (e) {
+            console.error('GSAP load failed', e);
+          });
+      }
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Animated Drop",
+  "tag": "section",
+  "class": "section animated-drop-wrapper",
+  "settings": [
+    { "type": "image_picker", "id": "drop_image", "label": "Drop Image" },
+    { "type": "color", "id": "bg_color", "default": "#ffffff", "label": "Background Color" },
+    {
+      "type": "select",
+      "id": "image_alignment",
+      "label": "Image Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "richtext",
+      "name": "Richtext",
+      "settings": [
+        { "type": "richtext", "id": "text", "label": "Text" },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Text Alignment",
+          "default": "left",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Block Position",
+          "default": "left",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "image_with_text",
+      "name": "Image with Text",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "richtext", "id": "text", "label": "Caption" },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Text Alignment",
+          "default": "left",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Block Position",
+          "default": "left",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Animated Drop" }]
+}
+{% endschema %}

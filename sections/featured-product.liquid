@@ -1,0 +1,70 @@
+{% comment %}
+  Custom section: Featured Oatopia Product (like Featured Favorite)
+  - Assign a product via Theme Editor
+{% endcomment %}
+
+<section class="featured-product-section section">
+  <div class="page-width">
+    {% assign product = all_products[section.settings.featured_product] %}
+    {% if product != blank %}
+      <div
+        class="featured-product-grid"
+        style="display: flex; align-items: center; gap: 3rem; max-height: 600px; overflow: hidden;"
+      >
+        <div class="featured-product__media" style="flex: 0 0 50%; max-height: 100%;">
+          <a href="{{ product.url }}">
+            {{
+              product.featured_image
+              | image_url: width: 800
+              | image_tag:
+                loading: 'lazy',
+                alt: product.title,
+                style: 'width: 100%; height: auto; max-height: 600px; object-fit: cover;'
+            }}
+          </a>
+        </div>
+        <div class="featured-product__content" style="flex: 0 0 50%; text-align: left;">
+          {% if section.settings.title != blank %}
+            <p class="subtitle" style="font-size: 1rem; text-transform: uppercase; margin-bottom: 0.5em;">
+              {{ section.settings.title }}
+            </p>
+          {% endif %}
+          <h2 class="h1" style="margin-bottom: 0.5em;">{{ product.title }}</h2>
+          <div class="rte" style="margin-bottom: 1em; max-width: 500px;">
+            {{ product.description | strip_html | truncatewords: 25 }}
+          </div>
+          <a href="{{ product.url }}" class="button button--primary"> Shop Now </a>
+        </div>
+      </div>
+    {% else %}
+      <p class="text-center">No product selected. Please choose one in the Theme Editor.</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Product",
+  "tag": "section",
+  "class": "section section-featured-product",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Subheading",
+      "default": "Featured Favorite"
+    },
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Choose product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Product",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

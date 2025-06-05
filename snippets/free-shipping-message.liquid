@@ -1,0 +1,14 @@
+{{ 'component-free-shipping-message.css' | asset_url | stylesheet_tag }}
+
+{%- assign threshold = settings.free_shipping_threshold | times: 100 -%}
+{%- assign cart_total = cart.total_price -%}
+{%- assign remaining = threshold | minus: cart_total -%}
+<div class="free-ship-bar" data-threshold="{{ threshold }}">
+  {%- if cart_total >= threshold -%}
+    <p class="qualify">🎉 You qualify for free shipping!</p>
+  {%- else -%}
+    <p class="progress">
+      Spend <strong>{{ remaining | money }}</strong> more to get free shipping!
+    </p>
+  {%- endif -%}
+</div>

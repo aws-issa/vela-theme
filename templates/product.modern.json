@@ -1,0 +1,223 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+    "sections": {
+      "main": {
+        "type": "main-product",
+        "blocks": {
+          "title": {
+            "type": "title",
+            "settings": {}
+          },
+          "caption": {
+            "type": "text",
+            "settings": {
+              "text": "{{ product.metafields.descriptors.subtitle.value }}",
+              "text_style": "subtitle"
+            }
+          },
+          "price": {
+            "type": "price",
+            "settings": {}
+          },
+          "variant_picker": {
+            "type": "variant_picker",
+            "settings": {
+              "picker_type": "button",
+              "swatch_shape": "circle"
+            }
+          },
+          "quantity_selector": {
+            "type": "quantity_selector",
+            "settings": {}
+          },
+          "buy_buttons": {
+            "type": "buy_buttons",
+            "settings": {
+              "show_dynamic_checkout": false,
+              "show_gift_card_recipient": true
+            }
+          },
+          "description": {
+            "type": "description",
+            "settings": {}
+          }
+        },
+        "block_order": [
+          "title",
+          "caption",
+          "variant_picker",
+          "quantity_selector",
+          "buy_buttons",
+          "description",
+          "price",
+        ],
+        "settings": {
+          "enable_sticky_info": true,
+          "color_scheme": "",
+          "media_size": "medium",
+          "constrain_to_viewport": true,
+          "media_fit": "contain",
+          "gallery_layout": "thumbnail_slider",
+          "mobile_thumbnails": "show",
+          "media_position": "left",
+          "image_zoom": "none",
+          "hide_variants": false,
+          "enable_video_looping": false,
+          "padding_top": 36,
+          "padding_bottom": 12
+        }
+      },
+      "image_banner_dcy8Qh": {
+        "type": "image-banner",
+        "settings": {
+          "my_video_background_banner": "",
+          "image": "shopify://shop_images/ChatGPT_Image_May_29_2025_11_53_50_AM.png",
+          "image_overlay_opacity": 0,
+          "image_height": "adapt",
+          "image_behavior": "none",
+          "desktop_content_position": "middle-center",
+          "desktop_content_alignment": "center",
+          "show_text_box": false,
+          "color_scheme": "",
+          "stack_images_on_mobile": true,
+          "mobile_content_alignment": "center",
+          "show_text_below": true
+        }
+      },
+      "image_with_text_ptfmq6": {
+        "type": "image-with-text",
+        "blocks": {
+          "heading_KbQdMm": {
+            "type": "heading",
+            "settings": {
+              "heading": "<strong>Recipes</strong>",
+              "heading_size": "h1"
+            }
+          },
+          "text_wpQrBR": {
+            "type": "text",
+            "settings": {
+              "text": "<p>Discover simple and tasty oat recipes for versatile and delicious meals. Unlock the culinary potential of this ancient grain with our favorite recipes.</p>",
+              "text_style": "body"
+            }
+          },
+          "button_gPTQrq": {
+            "type": "button",
+            "settings": {
+              "button_label": "Recipes",
+              "button_link": "shopify://blogs/recipes",
+              "button_style_secondary": false
+            }
+          }
+        },
+        "block_order": [
+          "heading_KbQdMm",
+          "text_wpQrBR",
+          "button_gPTQrq"
+        ],
+        "settings": {
+          "image": "shopify://shop_images/IMG_7930.jpg",
+          "height": "medium",
+          "desktop_image_width": "medium",
+          "layout": "image_first",
+          "image_behavior": "none",
+          "content_layout": "no-overlap",
+          "desktop_content_position": "top",
+          "desktop_content_alignment": "left",
+          "mobile_content_alignment": "left",
+          "section_color_scheme": "",
+          "color_scheme": "",
+          "padding_top": 36,
+          "padding_bottom": 36
+        }
+      },
+      "multicolumn_YnhLk8": {
+        "type": "multicolumn",
+        "blocks": {
+          "column_x9qBJH": {
+            "type": "column",
+            "settings": {
+              "title": "",
+              "text": "<p>★★★★★</p><p>\"From creamy breakfasts to baking and smoothies — Oatopia changed how I see oats. It’s comfort food, but better.\"</p><p><br/><strong>Jason Murrell</strong></p><p><em>Director of Grocery for Jimbo's</em></p>",
+              "link_label": "",
+              "link": ""
+            }
+          },
+          "column_aqrbqh": {
+            "type": "column",
+            "settings": {
+              "title": "",
+              "text": "<p>★★★★★</p><p>\"There’s nothing artificial here. Just real oats, real ingredients, and a real difference I can feel in my energy.\"</p><p><br/><strong>Bonsinetto</strong></p><p><em>CEO of Farm to Fork Experiences</em></p>",
+              "link_label": "",
+              "link": ""
+            }
+          },
+          "column_WUTePm": {
+            "type": "column",
+            "settings": {
+              "title": "",
+              "text": "<p>★★★★★</p><p>\"Rich, smooth, and satisfying — I use Oatopia’s oat milk in everything. It’s the only one I’ll buy now.\"</p><p><br/><strong> Manolo Reybaltar</strong></p><p><em>World Sailing 470 Class Champion (20</em>23)</p>",
+              "link_label": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "column_x9qBJH",
+          "column_aqrbqh",
+          "column_WUTePm"
+        ],
+        "settings": {
+          "title": "<strong>What Revivals said?</strong>",
+          "heading_size": "h1",
+          "image_width": "full",
+          "image_ratio": "adapt",
+          "button_label": "",
+          "button_link": "",
+          "button_filled": true,
+          "columns_desktop": 3,
+          "column_alignment": "center",
+          "background_style": "primary",
+          "color_scheme": "",
+          "columns_mobile": "1",
+          "swipe_on_mobile": false,
+          "padding_top": 36,
+          "padding_bottom": 36
+        }
+      },
+      "related-products": {
+        "type": "related-products",
+        "settings": {
+          "heading": "<strong>You may also like</strong>",
+          "heading_size": "h0",
+          "products_to_show": 4,
+          "columns_desktop": 4,
+          "columns_mobile": "2",
+          "color_scheme": "scheme-1",
+          "image_ratio": "square",
+          "image_shape": "default",
+          "show_secondary_image": true,
+          "show_vendor": false,
+          "show_rating": false,
+          "padding_top": 36,
+          "padding_bottom": 28
+        }
+      }
+    },
+    "order": [
+      "main",
+      "image_banner_dcy8Qh",
+      "image_with_text_ptfmq6",
+      "multicolumn_YnhLk8",
+      "related-products"
+    ]
+  }
+  

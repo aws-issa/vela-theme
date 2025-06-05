@@ -1,0 +1,99 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_iwfmY9": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_B7m8Kj": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Real nutrition. Proven by science.</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "buttons_t8pWqe": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_B7m8Kj",
+        "buttons_t8pWqe"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "my_video_background_banner": "",
+        "image": "shopify://shop_images/muesli_1445x_4436363c-ad01-492a-a852-178556528025.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_A6MkT4": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3crggx": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>The Science of Oats: Why This Grain Deserves the Spotlight</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_4U7c7n": {
+          "type": "text",
+          "settings": {
+            "text": "<p></p><p>Oats may seem simple, but their nutritional makeup is anything but. Backed by decades of clinical research, oats are a powerhouse of fiber, essential minerals, and complex carbohydrates — all of which work together to support long-term health.</p><h3>1. <strong>Heart Health Starts Here</strong></h3><p>The star compound in oats is <strong>beta-glucan</strong>, a soluble fiber that forms a gel-like substance in your gut. This fiber helps <strong>lower LDL (\"bad\") cholesterol</strong>, reduce total cholesterol levels, and maintain a healthy blood pressure — all major contributors to cardiovascular wellness.</p><p>A daily intake of just 3 grams of beta-glucan from oats has been shown to reduce LDL cholesterol by up to 10%.</p><h3>2. <strong>Fuel Without the Crash</strong></h3><p>Unlike refined carbs, oats are digested slowly, helping to <strong>stabilize blood sugar</strong> and provide steady energy throughout the day. Their low glycemic index makes them a smart choice for anyone managing blood sugar or insulin levels.</p><h3>3. <strong>Gut Health & Digestion</strong></h3><p>Oats contain both <strong>soluble and insoluble fiber</strong>, which work together to improve gut motility, support healthy microbiota, and promote regularity. A well-fed gut means better immunity, better mood, and better nutrient absorption.</p><h3>4. <strong>Rich in Micronutrients</strong></h3><p>Oats are naturally rich in:</p><ul><li><strong>Magnesium</strong> (for nerve and muscle function)</li><li><strong>Iron</strong> (for oxygen transport)</li><li><strong>Zinc</strong> (for immune defense)</li><li><strong>B vitamins</strong> (for energy production)</li></ul><p>All of this comes in a naturally gluten-free (when certified) and unprocessed whole grain.</p><h3>5. <strong>Proven by Research</strong></h3><p>Hundreds of studies across institutions including the <strong>European Food Safety Authority (EFSA)</strong> and <strong>FDA</strong> have approved health claims around oat beta-glucan’s impact on cholesterol and heart health.</p><p>Whether you enjoy them in a bowl, a smoothie, or a milk alternative — oats offer more than taste. They offer science-backed, everyday wellness.</p><p><strong>Oatopia is built on these facts — and crafted for the future of food.</strong></p><p></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3crggx",
+        "text_4U7c7n"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_iwfmY9",
+    "rich_text_A6MkT4"
+  ]
+}

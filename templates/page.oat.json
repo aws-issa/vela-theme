@@ -1,0 +1,119 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_WViDCx": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_B8cBHB": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>One humble grain. Endless possibilities.</strong>",
+            "heading_size": "hxl"
+          }
+        }
+      },
+      "block_order": [
+        "heading_B8cBHB"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "my_video_background_banner": "",
+        "image": "shopify://shop_images/TypesOfOats-OatGroats-b469bc1bca3d49aebe0c61fbb3e3143c.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "top-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-4",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_GpgYim": {
+      "type": "rich-text",
+      "blocks": {
+        "text_c4D6G8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Oats are one of nature’s most nourishing grains — rich in fiber, protein, and essential nutrients.<br/><br/>Loved for their simplicity and trusted for generations, oats fuel your body gently and keep you feeling full, energized, and balanced.<br/><br/>At Oatopia, we celebrate the oat in all its forms — because eating well should be both wholesome and delicious.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_c4D6G8"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_with_text_A7iz3Q": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_WnR9ad": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>A Grain with History — and Purpose</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_ni76fF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Oats have been cultivated for thousands of years, not just for their heartiness, but for their power to sustain.<br/><br/>Packed with beta-glucan fiber and slow-digesting carbs, oats provide a steady source of energy — whether in your breakfast bowl or your favorite baked goo</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_WnR9ad",
+        "text_ni76fF"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/oats.webp",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_WViDCx",
+    "rich_text_GpgYim",
+    "image_with_text_A7iz3Q"
+  ]
+}
