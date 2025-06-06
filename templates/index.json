@@ -83,7 +83,7 @@
         "text_VcjrwW": {
           "type": "text",
           "settings": {
-            "text": "<h2><strong>VELA—Vintage Era Legacy Archive—curates timeless treasures so collectors can celebrate the past they love. Since 2025 we’ve united thousands of enthusiasts with authentic antiques and attentive, white-glove service.</strong></h2>"
+            "text": "<h2>VELA—Vintage Era Legacy Archive—curates timeless treasures so collectors can celebrate the past they love. Since 2025 we’ve united thousands of enthusiasts with authentic antiques and attentive, white-glove service.</h2>"
           }
         }
       },
@@ -94,7 +94,7 @@
       "custom_css": [
         "div {background-color: rgb(215, 235, 95);}",
         "h3,h1,p,h4,h5,h2,a,div {color: #014648;}",
-        "h2 {font-weight: 400}"
+        "h2 {font-weight: 500;}"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
