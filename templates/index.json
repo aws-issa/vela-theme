@@ -92,7 +92,7 @@
         "text_VcjrwW"
       ],
       "custom_css": [
-        "div {background-color: rgb(215, 235, 95);}"
+        "div {background-color: rgb(215, 235, 95); text-color: #014648}"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
