@@ -93,7 +93,7 @@
       ],
       "custom_css": [
         "div {background-color: rgb(215, 235, 95);}",
-        "h3{color: #014648;}"
+        "h3,h1, p, h4, h5{color: #014648;}"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
