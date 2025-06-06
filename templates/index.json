@@ -126,12 +126,19 @@
           "settings": {
             "collection": "decor"
           }
+        },
+        "collection_tab_kgF8qV": {
+          "type": "collection_tab",
+          "settings": {
+            "collection": "all"
+          }
         }
       },
       "block_order": [
         "collection_tab_pJJtXa",
         "collection_tab_mCCeJf",
-        "collection_tab_RqeFRd"
+        "collection_tab_RqeFRd",
+        "collection_tab_kgF8qV"
       ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
