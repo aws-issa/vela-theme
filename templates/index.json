@@ -142,7 +142,7 @@
       ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "products_to_show": 25,
+        "products_to_show": 10,
         "title": "Featured collection",
         "heading_size": "h1",
         "description": "",
