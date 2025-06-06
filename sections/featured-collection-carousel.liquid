@@ -11,16 +11,6 @@
       "max": 800,
       "step": 10,
       "default": 500
-    },
-    {
-      "type": "select",
-      "id": "overlay_position",
-      "label": "Overlay position",
-      "options": [
-        { "value": "bottom-right", "label": "Bottom right" },
-        { "value": "upper-left", "label": "Upper left" }
-      ],
-      "default": "bottom-right"
     }
   ],
   "blocks": [
@@ -44,6 +34,16 @@
           "id": "featured_description",
           "label": "Featured Description",
           "default": "Write something about this collection."
+        },
+        {
+          "type": "select",
+          "id": "overlay_position",
+          "label": "Overlay position",
+          "options": [
+            { "value": "bottom-right", "label": "Bottom right" },
+            { "value": "upper-left", "label": "Upper left" }
+          ],
+          "default": "bottom-right"
         }
       ]
     }
@@ -76,7 +76,7 @@
         <div
           class="
             tw-absolute tw-max-w-md tw-flex tw-flex-col tw-space-y-2
-            {% if section.settings.overlay_position == 'upper-left' %}
+            {% if block.settings.overlay_position == 'upper-left' %}
               tw-top-8 tw-left-8 tw-items-start tw-text-left
             {% else %}
               tw-bottom-8 tw-right-8 tw-items-end tw-text-right
