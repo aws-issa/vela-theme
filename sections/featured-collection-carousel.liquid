@@ -59,9 +59,11 @@
 {% endschema %}
 
 <div
-  class="tw-relative tw-overflow-hidden group"
+  class="tw-relative tw-overflow-hidden"
   style="height: {{ section.settings.carousel_height }}px"
-  x-data="{ current: 0 }"
+  x-data="{ current: 0, hover: false }"
+  @mouseenter="hover = true"
+  @mouseleave="hover = false"
 >
   <div
     class="tw-flex tw-transition-transform tw-duration-700 tw-ease-in-out"
@@ -75,7 +77,7 @@
       >
         <div
           class="
-            tw-absolute tw-max-w-md tw-flex tw-flex-col tw-space-y-2
+            tw-absolute tw-max-w-md tw-flex tw-flex-col
             {% if block.settings.overlay_position == 'upper-left' %}
               tw-top-8 tw-left-8 tw-items-start tw-text-left
             {% else %}
@@ -83,7 +85,7 @@
             {% endif %}
           "
         >
-          <h2 class="tw-text-6xl md:tw-text-10xl tw-font-extrabold tw-text-white tw-drop-shadow-lg">
+          <h2 class="tw-text-6xl md:tw-text-7xl tw-font-extrabold tw-text-white tw-drop-shadow-lg tw-mb-3">
             {{ block.settings.featured_title }}
           </h2>
           <p class="tw-text-4xl tw-leading-relaxed tw-text-white tw-drop-shadow">
@@ -103,7 +105,9 @@
   <button
     type="button"
     @click="current = (current - 1 + {{ section.blocks.size }}) % {{ section.blocks.size }}"
-    class="tw-absolute tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-bg-white tw-text-black tw-shadow tw-rounded-sm tw-opacity-80 hover:tw-opacity-100 tw-transition-opacity tw-duration-300 tw-z-10 tw-text-2xl tw-left-4 tw-top-1/2 -tw-translate-y-1/2"
+    x-show="hover"
+    x-transition.opacity.duration.300ms
+    class="tw-absolute tw-w-16 tw-h-16 tw-bg-white/80 tw-text-black tw-rounded-sm tw-flex tw-items-center tw-justify-center tw-z-10 tw-text-3xl tw-left-4 tw-top-1/2 -tw-translate-y-1/2"
   >
     &#8592;
   </button>
@@ -111,7 +115,9 @@
   <button
     type="button"
     @click="current = (current + 1) % {{ section.blocks.size }}"
-    class="tw-absolute tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-bg-white tw-text-black tw-shadow tw-rounded-sm tw-opacity-80 hover:tw-opacity-100 tw-transition-opacity tw-duration-300 tw-z-10 tw-text-2xl tw-right-4 tw-top-1/2 -tw-translate-y-1/2"
+    x-show="hover"
+    x-transition.opacity.duration.300ms
+    class="tw-absolute tw-w-16 tw-h-16 tw-bg-white/80 tw-text-black tw-rounded-sm tw-flex tw-items-center tw-justify-center tw-z-10 tw-text-3xl tw-right-4 tw-top-1/2 -tw-translate-y-1/2"
   >
     &#8594;
   </button>
