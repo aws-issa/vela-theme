@@ -36,6 +36,55 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* --- Collection tabs nav --- */
+  .collection-tabs--nav {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+    row-gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .collection-tabs--nav .collection-tab {
+    all: unset;
+    cursor: pointer;
+    font-size: 1.5rem;        /* 18px */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    padding-bottom: 0.2rem;
+  }
+
+  .collection-tabs--nav .collection-tab::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: transparent;
+    transition: background 0.25s ease;
+  }
+
+  .collection-tabs--nav .collection-tab:hover::after,
+  .collection-tabs--nav .collection-tab.is-active::after {
+    background: currentColor;
+  }
+
+  /* Force left alignment for this section’s heading + nav */
+  #collection-{{ section.id }} .collection__title {
+    max-width: none !important;
+    width: auto !important;
+    margin-left: 32px !important;
+    padding-left: 0 !important;
+  }
+
+  #collection-{{ section.id }} .collection-tabs--nav {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -73,20 +122,19 @@
     data-id="{{ section.id }}"
   >
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
-      <h2 class="title h1">Shop Our Top Categories</h2>
-      <ul class="collection-tabs" role="tablist">
+      <h2 class="title h1" style="text-align: left;">Shop Our Top Categories</h2>
+      <nav class="collection-tabs collection-tabs--nav" role="tablist">
         {% for block in section.blocks %}
-          <li role="presentation">
-            <button
-              role="tab"
-              class="collection-tab{% if forloop.first %} is-active{% endif %}"
-              data-index="{{ forloop.index0 }}"
-            >
-              {{ block.settings.collection.title }}
-            </button>
-          </li>
+          <button
+            type="button"
+            role="tab"
+            class="collection-tab{% if forloop.first %} is-active{% endif %}"
+            data-index="{{ forloop.index0 }}"
+          >
+            {{ block.settings.collection.title }}
+          </button>
         {% endfor %}
-      </ul>
+      </nav>
     </div>
 
     {% for block in section.blocks %}
@@ -100,7 +148,7 @@
         <ul
           id="Slider-{{ section.id }}-{{ forloop.index0 }}"
           data-id="{{ section.id }}-{{ forloop.index0 }}"
-          class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down slider{% if section.settings.enable_desktop_slider %} slider--desktop{% endif %}"
+          class="tw-ml-2 grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down slider{% if section.settings.enable_desktop_slider %} slider--desktop{% endif %}"
           role="list"
           aria-label="{{ current_collection.title }}"
         >

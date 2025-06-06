@@ -79,6 +79,10 @@
   margin-bottom: 0.75rem
 }
 
+.tw-ml-2 {
+  margin-left: 0.5rem
+}
+
 .tw-inline-block {
   display: inline-block
 }
