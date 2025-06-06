@@ -41,7 +41,15 @@
           "settings": {
             "collection": "nautical-curios",
             "featured_title": "We Heard You Want Pocket Lore!",
-            "featured_description": "...more and more of lore"
+            "featured_description": "...More And More of Lore"
+          }
+        },
+        "collection_slide_yQPdca": {
+          "type": "collection_slide",
+          "settings": {
+            "collection": "atelier-decor",
+            "featured_title": "Only Atelier and Only",
+            "featured_description": "Tthe One And Only.."
           }
         }
       },
@@ -49,7 +57,8 @@
         "collection_slide_8ymNBa",
         "collection_slide_R6NfNP",
         "collection_slide_aA3CUK",
-        "collection_slide_7zJnRa"
+        "collection_slide_7zJnRa",
+        "collection_slide_yQPdca"
       ],
       "name": "Featured Collection Carousel",
       "settings": {
