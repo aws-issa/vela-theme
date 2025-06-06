@@ -17,7 +17,8 @@
           "settings": {
             "collection": "gilded-decor",
             "featured_title": "Gilded Echos",
-            "featured_description": "...Here We Go To Echo"
+            "featured_description": "...Here We Go To Echo",
+            "overlay_position": "upper-left"
           }
         },
         "collection_slide_R6NfNP": {
@@ -25,7 +26,8 @@
           "settings": {
             "collection": "craft-utility",
             "featured_title": "Let's Craft!",
-            "featured_description": "Coolest Crafts Collection.."
+            "featured_description": "Coolest Crafts Collection..",
+            "overlay_position": "bottom-right"
           }
         },
         "collection_slide_aA3CUK": {
@@ -33,7 +35,8 @@
           "settings": {
             "collection": "paper-curious",
             "featured_title": "Into Papers",
-            "featured_description": "Get Yourself Some Papers..."
+            "featured_description": "Get Yourself Some Papers...",
+            "overlay_position": "upper-left"
           }
         },
         "collection_slide_7zJnRa": {
@@ -41,7 +44,8 @@
           "settings": {
             "collection": "nautical-curios",
             "featured_title": "We Heard You Want Pocket Lore!",
-            "featured_description": "...More And More of Lore"
+            "featured_description": "...More And More of Lore",
+            "overlay_position": "bottom-right"
           }
         },
         "collection_slide_yQPdca": {
@@ -49,7 +53,8 @@
           "settings": {
             "collection": "atelier-decor",
             "featured_title": "Only Atelier and Only",
-            "featured_description": "Tthe One And Only.."
+            "featured_description": "Tthe One And Only..",
+            "overlay_position": "upper-left"
           }
         }
       },
@@ -62,8 +67,7 @@
       ],
       "name": "Featured Collection Carousel",
       "settings": {
-        "carousel_height": 720,
-        "overlay_position": "bottom-right"
+        "carousel_height": 720
       }
     }
   },
