@@ -11,6 +11,16 @@
       "max": 800,
       "step": 10,
       "default": 500
+    },
+    {
+      "type": "select",
+      "id": "overlay_position",
+      "label": "Overlay position",
+      "options": [
+        { "value": "bottom-right", "label": "Bottom right" },
+        { "value": "upper-left", "label": "Upper left" }
+      ],
+      "default": "bottom-right"
     }
   ],
   "blocks": [
@@ -63,11 +73,20 @@
         class="tw-flex-shrink-0 tw-w-full tw-bg-cover tw-bg-center tw-relative"
         style="background-image: url('{{ collection.image | image_url: width: 1600 }}'); height: {{ section.settings.carousel_height }}px"
       >
-        <div class="tw-absolute tw-bottom-8 tw-right-8 tw-max-w-md tw-text-right tw-space-y-4">
-          <h2 class="tw-text-4xl md:tw-text-5xl tw-font-extrabold tw-text-white tw-drop-shadow-lg">
+        <div
+          class="
+            tw-absolute tw-max-w-md tw-flex tw-flex-col tw-space-y-2
+            {% if section.settings.overlay_position == 'upper-left' %}
+              tw-top-8 tw-left-8 tw-items-start tw-text-left
+            {% else %}
+              tw-bottom-8 tw-right-8 tw-items-end tw-text-right
+            {% endif %}
+          "
+        >
+          <h2 class="tw-text-6xl md:tw-text-10xl tw-font-extrabold tw-text-white tw-drop-shadow-lg">
             {{ block.settings.featured_title }}
           </h2>
-          <p class="tw-text-lg tw-leading-relaxed tw-text-white tw-drop-shadow">
+          <p class="tw-text-4xl tw-leading-relaxed tw-text-white tw-drop-shadow">
             {{ block.settings.featured_description }}
           </p>
           <a
