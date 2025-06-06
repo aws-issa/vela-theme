@@ -94,7 +94,7 @@
       "custom_css": [
         "div {background-color: rgb(215, 235, 95);}",
         "h3,h1,p,h4,h5,h2,a,div {color: #014648;}",
-        "h2 {font-weight: 500;}"
+        "h2 {font-weight: 600;}"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
