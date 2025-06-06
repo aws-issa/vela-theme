@@ -38,7 +38,7 @@
       ]
     }
   ],
-  "max_blocks": 10,
+  "max_blocks": 5,
   "presets": [
     {
       "name": "Featured Collection Carousel",
@@ -49,23 +49,30 @@
 {% endschema %}
 
 <div
-  class="relative overflow-hidden"
+  class="tw-relative tw-overflow-hidden group"
   style="height: {{ section.settings.carousel_height }}px"
   x-data="{ current: 0 }"
 >
-  <div class="flex transition-transform duration-700 ease-in-out" :style="`transform: translateX(-${current * 100}%);`">
+  <div
+    class="tw-flex tw-transition-transform tw-duration-700 tw-ease-in-out"
+    :style="'transform: translateX(-' + (current * 100) + '%)'"
+  >
     {% for block in section.blocks %}
       {% assign collection = block.settings.collection %}
       <div
-        class="flex-shrink-0 w-full bg-cover bg-center relative"
+        class="tw-flex-shrink-0 tw-w-full tw-bg-cover tw-bg-center tw-relative"
         style="background-image: url('{{ collection.image | image_url: width: 1600 }}'); height: {{ section.settings.carousel_height }}px"
       >
-        <div class="absolute bottom-4 right-4 bg-black bg-opacity-60 text-white p-4 rounded-lg max-w-sm text-right">
-          <h2 class="text-xl font-bold">{{ block.settings.featured_title }}</h2>
-          <p class="text-sm mt-1 mb-2">{{ block.settings.featured_description }}</p>
+        <div class="tw-absolute tw-bottom-8 tw-right-8 tw-max-w-md tw-text-right tw-space-y-4">
+          <h2 class="tw-text-4xl md:tw-text-5xl tw-font-extrabold tw-text-white tw-drop-shadow-lg">
+            {{ block.settings.featured_title }}
+          </h2>
+          <p class="tw-text-lg tw-leading-relaxed tw-text-white tw-drop-shadow">
+            {{ block.settings.featured_description }}
+          </p>
           <a
             href="{{ collection.url }}"
-            class="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 inline-block text-sm"
+            class="tw-inline-block tw-bg-green-700 hover:tw-bg-green-800 tw-text-white tw-font-semibold tw-px-6 tw-py-3 tw-rounded tw-transition tw-shadow-lg"
             >View Collection</a
           >
         </div>
@@ -74,18 +81,19 @@
   </div>
 
   <!-- Navigation Arrows -->
-  <div class="absolute inset-0 flex justify-between items-center px-4 opacity-0 hover:opacity-100 transition-opacity duration-300">
-    <button
-      @click="current = (current - 1 + {{ section.blocks.size }}) % {{ section.blocks.size }}"
-      class="bg-white text-black p-2 rounded-full shadow hover:bg-gray-100"
-    >
-      &#8592;
-    </button>
-    <button
-      @click="current = (current + 1) % {{ section.blocks.size }}"
-      class="bg-white text-black p-2 rounded-full shadow hover:bg-gray-100"
-    >
-      &#8594;
-    </button>
-  </div>
+  <button
+    type="button"
+    @click="current = (current - 1 + {{ section.blocks.size }}) % {{ section.blocks.size }}"
+    class="tw-absolute tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-bg-white tw-text-black tw-shadow tw-rounded-sm tw-opacity-80 hover:tw-opacity-100 tw-transition-opacity tw-duration-300 tw-z-10 tw-text-2xl tw-left-4 tw-top-1/2 -tw-translate-y-1/2"
+  >
+    &#8592;
+  </button>
+
+  <button
+    type="button"
+    @click="current = (current + 1) % {{ section.blocks.size }}"
+    class="tw-absolute tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-bg-white tw-text-black tw-shadow tw-rounded-sm tw-opacity-80 hover:tw-opacity-100 tw-transition-opacity tw-duration-300 tw-z-10 tw-text-2xl tw-right-4 tw-top-1/2 -tw-translate-y-1/2"
+  >
+    &#8594;
+  </button>
 </div>
