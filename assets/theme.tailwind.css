@@ -38,6 +38,14 @@
   left: 2rem
 }
 
+.tw-left-2 {
+  left: 0.5rem
+}
+
+.tw-right-2 {
+  right: 0.5rem
+}
+
 .tw-z-10 {
   z-index: 10
 }
@@ -123,6 +131,10 @@
   width: 4rem
 }
 
+.tw-w-60 {
+  width: 15rem
+}
+
 .tw-max-w-md {
   max-width: 28rem
 }
@@ -131,9 +143,25 @@
   flex-shrink: 0
 }
 
+.tw-shrink-0 {
+  flex-shrink: 0
+}
+
 .-tw-translate-y-1\/2 {
   --tw-translate-y: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.tw-snap-x {
+  scroll-snap-type: x var(--tw-scroll-snap-strictness)
+}
+
+.tw-snap-mandatory {
+  --tw-scroll-snap-strictness: mandatory
+}
+
+.tw-snap-start {
+  scroll-snap-align: start
 }
 
 .tw-flex-col {
@@ -156,6 +184,14 @@
   justify-content: center
 }
 
+.tw-gap-4 {
+  gap: 1rem
+}
+
+.tw-gap-0 {
+  gap: 0px
+}
+
 .tw-space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -174,6 +210,14 @@
 
 .tw-overflow-hidden {
   overflow: hidden
+}
+
+.tw-overflow-x-auto {
+  overflow-x: auto
+}
+
+.tw-scroll-smooth {
+  scroll-behavior: smooth
 }
 
 .tw-rounded {
@@ -218,6 +262,26 @@
 .tw-py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem
+}
+
+.tw-pl-\[2px\] {
+  padding-left: 2px
+}
+
+.tw-pr-\[2px\] {
+  padding-right: 2px
+}
+
+.tw-pl-\[1px\] {
+  padding-left: 1px
+}
+
+.tw-pb-4 {
+  padding-bottom: 1rem
+}
+
+.tw-pb-6 {
+  padding-bottom: 1.5rem
 }
 
 .tw-text-left {
@@ -273,6 +337,10 @@
 
 .tw-font-semibold {
   font-weight: 600
+}
+
+.tw-font-bold {
+  font-weight: 700
 }
 
 .tw-leading-relaxed {
@@ -354,6 +422,11 @@
 .hover\:tw-bg-green-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(22 101 52 / var(--tw-bg-opacity))
+}
+
+.hover\:tw-bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
 .hover\:tw-opacity-100:hover {

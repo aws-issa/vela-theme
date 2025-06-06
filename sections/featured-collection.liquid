@@ -85,6 +85,37 @@
     margin-left: 0 !important;
     padding-left: 0 !important;
   }
+
+  /* Hide horizontal scrollbar but allow scrolling */
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Center text below product images inside this section */
+  #collection-{{ section.id }} .vela-card {
+    text-align: center;
+  }
+
+  /* Ensure title, vendor, and price inside product card are centered */
+  #collection-{{ section.id }} .vela-card .card__information {
+    text-align: center !important;
+  }
+
+  /* Center the price element inside each product card */
+  #collection-{{ section.id }} .vela-card .price {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* Typography tweaks for this section */
+  #collection-{{ section.id }} .vela-card .card__heading {
+    font-size: 1.5rem !important;   /* bigger title ~20px */
+    font-weight: 700 !important;     /* bolder */
+  }
+
+  #collection-{{ section.id }} .vela-card .price {
+    font-size: 1.25rem !important;  /* smaller price ~14px */
+    font-weight: 400 !important;     /* lighter */
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -122,7 +153,7 @@
     data-id="{{ section.id }}"
   >
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
-      <h2 class="title h1" style="text-align: left;">Shop Our Top Categories</h2>
+      <h2 class="tw-font-bold tw-pb-6">Shop Our Top Categories</h2>
       <nav class="collection-tabs collection-tabs--nav" role="tablist">
         {% for block in section.blocks %}
           <button
@@ -144,21 +175,55 @@
         {% assign products_to_display = section.settings.products_to_show %}
       {% endif %}
 
-      <slider-component class="collection-slider{% unless forloop.first %} hidden{% endunless %} slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}">
-        <ul
-          id="Slider-{{ section.id }}-{{ forloop.index0 }}"
-          data-id="{{ section.id }}-{{ forloop.index0 }}"
-          class="tw-ml-2 grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down slider{% if section.settings.enable_desktop_slider %} slider--desktop{% endif %}"
-          role="list"
-          aria-label="{{ current_collection.title }}"
+      <div
+        x-data="
+          {
+            hover: false,
+            showLeft: false,
+            showRight: false,
+            update() {
+              const track = this.$refs.track;
+              if (!track) return;
+              const tolerance = 4; // px tolerance to account for 2 px padding and rounding
+              this.showLeft = track.scrollLeft > tolerance;
+              this.showRight = track.scrollLeft + track.clientWidth < track.scrollWidth - tolerance;
+            },
+            scrollBy(dir) {
+              const track = this.$refs.track;
+              const card = track.querySelector('.vela-card');
+              if (!card) return;
+              const step = card.offsetWidth + parseFloat(getComputedStyle(card).marginRight);
+              track.scrollBy({ left: dir * step, behavior: 'smooth' });
+              this.$nextTick(() => this.update());
+            },
+            init() { this.update(); }
+          }
+        "
+        @mouseenter="hover = true"
+        @mouseleave="hover = false"
+        class="vela-collection-slider tw-relative tw-w-full tw-overflow-hidden collection-slider{% unless forloop.first %} hidden{% endunless %}"
+      >
+        <!-- Left arrow -->
+        <button
+          x-show="hover && showLeft"
+          x-transition.opacity.duration.200ms
+          type="button"
+          @click="scrollBy(-1)"
+          class="tw-absolute tw-left-2 tw-top-1/2 -tw-translate-y-1/2 tw-w-12 tw-h-12 tw-bg-white/80 tw-text-black tw-rounded-sm tw-flex tw-items-center tw-justify-center tw-z-10 hover:tw-bg-white tw-transition"
+        >
+          &#8592;
+        </button>
+
+        <!-- Track -->
+        <div
+          x-ref="track"
+          @scroll="update()"
+          class="tw-flex tw-gap-0 tw-pl-[1px] tw-pr-[2px] tw-overflow-x-auto tw-scroll-smooth tw-snap-x tw-snap-mandatory scrollbar-hide"
         >
           {% assign lazy_load = false %}
           {% paginate current_collection.products by section.settings.products_to_show %}
             {% for product in current_collection.products limit: section.settings.products_to_show %}
-              {% if lazy_load == false and forloop.index > section.settings.columns_mobile %}
-                {% assign lazy_load = true %}
-              {% endif %}
-              <li class="grid__item">
+              <div class="vela-card tw-shrink-0 tw-snap-start tw-text-center" style="width:400px;">
                 {% render 'card-product',
                   card_product: product,
                   media_aspect_ratio: section.settings.image_ratio,
@@ -170,34 +235,22 @@
                   section_id: section.id,
                   quick_add: section.settings.quick_add
                 %}
-              </li>
+              </div>
             {% endfor %}
           {% endpaginate %}
-        </ul>
-        <div class="slider-buttons no-js-hidden" aria-hidden="true">
-          <button
-            type="button"
-            class="slider-button slider-button--prev"
-            name="previous"
-            aria-controls="Slider-{{ section.id }}-{{ forloop.index0 }}"
-          >
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
-          </button>
-
-          <button
-            type="button"
-            class="slider-button slider-button--next"
-            name="next"
-            aria-controls="Slider-{{ section.id }}-{{ forloop.index0 }}"
-          >
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
-          </button>
         </div>
-      </slider-component>
+
+        <!-- Right arrow -->
+        <button
+          x-show="hover && showRight"
+          x-transition.opacity.duration.200ms
+          type="button"
+          @click="scrollBy(1)"
+          class="tw-absolute tw-right-2 tw-top-1/2 -tw-translate-y-1/2 tw-w-12 tw-h-12 tw-bg-white/80 tw-text-black tw-rounded-sm tw-flex tw-items-center tw-justify-center tw-z-10 hover:tw-bg-white tw-transition"
+        >
+          &#8594;
+        </button>
+      </div>
     {% endfor %}
 
     {%- if section.settings.show_view_all and more_in_collection -%}
