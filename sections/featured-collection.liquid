@@ -73,50 +73,44 @@
     data-id="{{ section.id }}"
   >
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
-      {%- if section.settings.title != blank -%}
-        <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-          {{ section.settings.title }}
-        </h2>
-      {%- endif -%}
-      {%- if section.settings.description != blank
-        or section.settings.show_description
-        and section.settings.collection.description != empty
-      -%}
-        <div class="collection__description {{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-          {%- if section.settings.show_description -%}
-            {{ section.settings.collection.description }}
-          {%- else -%}
-            {{ section.settings.description -}}
-          {%- endif %}
-        </div>
-      {%- endif -%}
+      <h2 class="title h1">Shop Our Top Categories</h2>
+      <ul class="collection-tabs" role="tablist">
+        {% for block in section.blocks %}
+          <li role="presentation">
+            <button
+              role="tab"
+              class="collection-tab{% if forloop.first %} is-active{% endif %}"
+              data-index="{{ forloop.index0 }}"
+            >
+              {{ block.settings.collection.title }}
+            </button>
+          </li>
+        {% endfor %}
+      </ul>
     </div>
 
-    <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-      <ul
-        id="Slider-{{ section.id }}"
-        data-id="{{ section.id }}"
-        class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop{% if section.settings.collection == blank %} grid--2-col-tablet-down{% else %} grid--{{ section.settings.columns_mobile }}-col-tablet-down{% endif %}{% if show_mobile_slider or show_desktop_slider %} slider{% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %}"
-        role="list"
-        aria-label="{{ 'general.slider.name' | t }}"
-      >
-        {% assign skip_card_product_styles = false %}
+    {% for block in section.blocks %}
+      {% assign current_collection = block.settings.collection %}
+      {% assign products_to_display = current_collection.all_products_count %}
+      {% if current_collection.all_products_count > section.settings.products_to_show %}
+        {% assign products_to_display = section.settings.products_to_show %}
+      {% endif %}
 
-        {%- if section.settings.collection.products.size > 0 -%}
+      <slider-component class="collection-slider{% unless forloop.first %} hidden{% endunless %} slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}">
+        <ul
+          id="Slider-{{ section.id }}-{{ forloop.index0 }}"
+          data-id="{{ section.id }}-{{ forloop.index0 }}"
+          class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down slider{% if section.settings.enable_desktop_slider %} slider--desktop{% endif %}"
+          role="list"
+          aria-label="{{ current_collection.title }}"
+        >
           {% assign lazy_load = false %}
-          {% paginate section.settings.collection.products by section.settings.products_to_show %}
-            {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-              {% if lazy_load == false and forloop.index > max_columns_to_show %}
+          {% paginate current_collection.products by section.settings.products_to_show %}
+            {% for product in current_collection.products limit: section.settings.products_to_show %}
+              {% if lazy_load == false and forloop.index > section.settings.columns_mobile %}
                 {% assign lazy_load = true %}
               {% endif %}
-              <li
-                id="Slide-{{ section.id }}-{{ forloop.index }}"
-                class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                {% if settings.animations_reveal_on_scroll %}
-                  data-cascade
-                  style="--animation-order: {{ forloop.index }};"
-                {% endif %}
-              >
+              <li class="grid__item">
                 {% render 'card-product',
                   card_product: product,
                   media_aspect_ratio: section.settings.image_ratio,
@@ -125,70 +119,38 @@
                   show_secondary_image: section.settings.show_secondary_image,
                   show_vendor: section.settings.show_vendor,
                   show_rating: section.settings.show_rating,
-                  skip_styles: skip_card_product_styles,
                   section_id: section.id,
                   quick_add: section.settings.quick_add
                 %}
               </li>
-              {%- assign skip_card_product_styles = true -%}
-            {%- endfor -%}
+            {% endfor %}
           {% endpaginate %}
-        {%- else -%}
-          {%- for i in (1..section.settings.columns_desktop) -%}
-            <li
-              class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-              {% if settings.animations_reveal_on_scroll %}
-                data-cascade
-                style="--animation-order: {{ forloop.index }};"
-              {% endif %}
-            >
-              {% liquid
-                assign ridx = forloop.rindex
-                case ridx
-                  when 5
-                    assign ridx = 1
-                  when 6
-                    assign ridx = 2
-                endcase
-              %}
-              {%- assign placeholder_image = 'product-apparel-' | append: ridx -%}
-              {% render 'card-product',
-                show_vendor: section.settings.show_vendor,
-                media_aspect_ratio: section.settings.image_ratio,
-                image_shape: section.settings.image_shape,
-                lazy_load: false,
-                placeholder_image: placeholder_image
-              %}
-            </li>
-          {%- endfor -%}
-        {%- endif -%}
-      </ul>
-      <div class="slider-buttons no-js-hidden" aria-hidden="true">
-        <button
-          type="button"
-          class="slider-button slider-button--prev"
-          name="previous"
-          aria-label="{{ 'general.slider.previous_slide' | t }}"
-          aria-controls="Slider-{{ section.id }}"
-        >
-          <span class="svg-wrapper">
-            {{- 'icon-caret.svg' | inline_asset_content -}}
-          </span>
-        </button>
+        </ul>
+        <div class="slider-buttons no-js-hidden" aria-hidden="true">
+          <button
+            type="button"
+            class="slider-button slider-button--prev"
+            name="previous"
+            aria-controls="Slider-{{ section.id }}-{{ forloop.index0 }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </button>
 
-        <button
-          type="button"
-          class="slider-button slider-button--next"
-          name="next"
-          aria-label="{{ 'general.slider.next_slide' | t }}"
-          aria-controls="Slider-{{ section.id }}"
-        >
-          <span class="svg-wrapper">
-            {{- 'icon-caret.svg' | inline_asset_content -}}
-          </span>
-        </button>
-      </div>
-    </slider-component>
+          <button
+            type="button"
+            class="slider-button slider-button--next"
+            name="next"
+            aria-controls="Slider-{{ section.id }}-{{ forloop.index0 }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </button>
+        </div>
+      </slider-component>
+    {% endfor %}
 
     {%- if section.settings.show_view_all and more_in_collection -%}
       <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -201,6 +163,22 @@
         </a>
       </div>
     {%- endif -%}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const root = document.getElementById('collection-{{ section.id }}');
+        if (!root) return;
+        const tabs = root.querySelectorAll('.collection-tab');
+        const sliders = root.querySelectorAll('.collection-slider');
+        tabs.forEach((tab, idx) => {
+          tab.addEventListener('click', () => {
+            tabs.forEach((t) => t.classList.remove('is-active'));
+            sliders.forEach((s) => s.classList.add('hidden'));
+            tab.classList.add('is-active');
+            sliders[idx].classList.remove('hidden');
+          });
+        });
+      });
+    </script>
     {% if section.settings.image_shape == 'arch' %}
       {{ 'mask-arch.svg' | inline_asset_content }}
     {%- endif -%}
@@ -216,11 +194,6 @@
     "groups": ["header", "footer"]
   },
   "settings": [
-    {
-      "type": "collection",
-      "id": "collection",
-      "label": "t:sections.featured-collection.settings.collection.label"
-    },
     {
       "type": "range",
       "id": "products_to_show",
@@ -512,6 +485,20 @@
       "default": 36
     }
   ],
+  "blocks": [
+    {
+      "type": "collection_tab",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
   "presets": [
     {
       "name": "t:sections.featured-collection.presets.name"
