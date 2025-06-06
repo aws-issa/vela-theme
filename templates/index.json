@@ -35,16 +35,26 @@
             "featured_title": "Into Papers",
             "featured_description": "Get yourself some papers..."
           }
+        },
+        "collection_slide_7zJnRa": {
+          "type": "collection_slide",
+          "settings": {
+            "collection": "nautical-curios",
+            "featured_title": "We Heard You Want Pocket Lore!",
+            "featured_description": "...more and more of lore"
+          }
         }
       },
       "block_order": [
         "collection_slide_8ymNBa",
         "collection_slide_R6NfNP",
-        "collection_slide_aA3CUK"
+        "collection_slide_aA3CUK",
+        "collection_slide_7zJnRa"
       ],
       "name": "Featured Collection Carousel",
       "settings": {
-        "carousel_height": 720
+        "carousel_height": 720,
+        "overlay_position": "bottom-right"
       }
     }
   },
