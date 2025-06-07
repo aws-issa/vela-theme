@@ -213,12 +213,27 @@
         "padding_top": 0,
         "padding_bottom": 0
       }
+    },
+    "featured_creators_78TNRE": {
+      "type": "featured-creators",
+      "name": "Featured Creators",
+      "settings": {
+        "featured_collections": [
+          "gilded-decor",
+          "craft-utility",
+          "paper-curious",
+          "nautical-curios",
+          "atelier-decor",
+          "kitchen-utility"
+        ]
+      }
     }
   },
   "order": [
     "featured_collection_carousel_HCkfMM",
     "rich_text_9Vtg9z",
     "featured_collection_zdVt8m",
-    "image_with_text_mefeRL"
+    "image_with_text_mefeRL",
+    "featured_creators_78TNRE"
   ]
 }
