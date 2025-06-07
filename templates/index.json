@@ -142,7 +142,7 @@
       ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "products_to_show": 10,
+        "products_to_show": 25,
         "title": "Featured collection",
         "heading_size": "h1",
         "description": "",
@@ -165,11 +165,60 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "image_with_text_mefeRL": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_wPRdRM": {
+          "type": "heading",
+          "settings": {
+            "heading": "Gilded Echoes",
+            "heading_size": "h1"
+          }
+        },
+        "text_xXWqkE": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A historian of 18th-century interiors, Eleanor Whitely curates opulent, gold-gilded pieces that reflect the splendor of aristocratic Europe. Her collection is a love letter to ornamental beauty and refined craftsmanship.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_Pc6cpT": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP THE COLLECTION",
+            "button_link": "shopify://collections/gilded-decor",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_wPRdRM",
+        "text_xXWqkE",
+        "button_Pc6cpT"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/decorative-arts-collection-landscape.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     }
   },
   "order": [
     "featured_collection_carousel_HCkfMM",
     "rich_text_9Vtg9z",
-    "featured_collection_zdVt8m"
+    "featured_collection_zdVt8m",
+    "image_with_text_mefeRL"
   ]
 }
