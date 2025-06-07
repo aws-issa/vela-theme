@@ -91,6 +91,22 @@
   margin-left: 0.5rem
 }
 
+.tw-mb-6 {
+  margin-bottom: 1.5rem
+}
+
+.tw-mr-4 {
+  margin-right: 1rem
+}
+
+.tw-mt-2 {
+  margin-top: 0.5rem
+}
+
+.tw-mt-3 {
+  margin-top: 0.75rem
+}
+
 .tw-inline-block {
   display: inline-block
 }
@@ -103,6 +119,10 @@
   display: none
 }
 
+.tw-aspect-square {
+  aspect-ratio: 1 / 1
+}
+
 .tw-h-12 {
   height: 3rem
 }
@@ -113,6 +133,10 @@
 
 .tw-h-16 {
   height: 4rem
+}
+
+.tw-h-10 {
+  height: 2.5rem
 }
 
 .tw-w-12 {
@@ -133,6 +157,14 @@
 
 .tw-w-60 {
   width: 15rem
+}
+
+.tw-w-10 {
+  width: 2.5rem
+}
+
+.tw-w-\[300px\] {
+  width: 300px
 }
 
 .tw-max-w-md {
@@ -254,6 +286,11 @@
   background-position: center
 }
 
+.tw-object-cover {
+  -o-object-fit: cover;
+     object-fit: cover
+}
+
 .tw-px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem
@@ -272,6 +309,16 @@
 .tw-px-8 {
   padding-left: 2rem;
   padding-right: 2rem
+}
+
+.tw-px-\[2px\] {
+  padding-left: 2px;
+  padding-right: 2px
+}
+
+.tw-py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem
 }
 
 .tw-pl-\[2px\] {
@@ -300,6 +347,10 @@
 
 .tw-pl-4 {
   padding-left: 1rem
+}
+
+.tw-pl-8 {
+  padding-left: 2rem
 }
 
 .tw-text-left {
@@ -349,6 +400,11 @@
   line-height: 2.25rem
 }
 
+.tw-text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
 .tw-font-extrabold {
   font-weight: 800
 }
@@ -359,6 +415,10 @@
 
 .tw-font-bold {
   font-weight: 700
+}
+
+.tw-font-medium {
+  font-weight: 500
 }
 
 .tw-leading-relaxed {
@@ -373,6 +433,10 @@
 .tw-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.tw-underline {
+  text-decoration-line: underline
 }
 
 .tw-opacity-80 {
@@ -449,6 +513,10 @@
 
 .hover\:tw-opacity-100:hover {
   opacity: 1
+}
+
+.hover\:tw-opacity-75:hover {
+  opacity: 0.75
 }
 
 .tw-group:hover .group-hover\:tw-flex {

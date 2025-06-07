@@ -1,0 +1,104 @@
+{% comment %} Featured Creators Section - Carousel of Collections {% endcomment %}
+
+<div
+  x-data="
+    {
+      hover: false,
+      showLeft: false,
+      showRight: false,
+      update() {
+        const track = this.$refs.track;
+        const epsilon = 4;
+        this.showLeft = track.scrollLeft > epsilon;
+        this.showRight = track.scrollLeft + track.clientWidth < track.scrollWidth - epsilon;
+      },
+      scrollBy(dir) {
+        const track = this.$refs.track;
+        const card = track.querySelector('.creator-card');
+        if (!card) return;
+        const step = card.offsetWidth + parseFloat(getComputedStyle(card).marginRight);
+        track.scrollBy({ left: dir * step, behavior: 'smooth' });
+        this.$nextTick(() => this.update());
+      },
+      init() { this.update(); }
+    }
+  "
+  @mouseenter="hover = true"
+  @mouseleave="hover = false"
+  class="tw-relative tw-py-12"
+>
+  <h2 class="tw-text-3xl tw-font-bold tw-mb-6 tw-pl-8">Featured Creators</h2>
+
+  <div class="tw-relative">
+    <!-- Arrow Left -->
+    <button
+      x-show="hover && showLeft"
+      x-transition.opacity.duration.200ms
+      @click="scrollBy(-1)"
+      type="button"
+      class="tw-absolute tw-left-2 tw-top-1/2 -tw-translate-y-1/2 tw-z-10 tw-w-10 tw-h-10 tw-bg-white/80 tw-text-black tw-rounded tw-flex tw-items-center tw-justify-center hover:tw-bg-white tw-transition"
+    >
+      &#8592;
+    </button>
+
+    <!-- Track -->
+    <div
+      x-ref="track"
+      @scroll="update()"
+      class="tw-flex tw-overflow-x-auto tw-scroll-smooth tw-snap-x tw-gap-0 tw-px-[2px]"
+    >
+      {% for collection in section.settings.featured_collections %}
+        <div class="creator-card tw-shrink-0 tw-w-[300px] tw-mr-4 tw-snap-start tw-text-center">
+          {% if collection.image %}
+            <a href="{{ collection.url }}">
+              <img
+                src="{{ collection.image | image_url: width: 600 }}"
+                alt="{{ collection.title }}"
+                width="600"
+                height="600"
+                class="tw-aspect-square tw-object-cover tw-rounded"
+              >
+            </a>
+          {% endif %}
+          <h3 class="tw-font-semibold tw-mt-3">{{ collection.title }}</h3>
+          <a
+            href="{{ collection.url }}"
+            class="tw-inline-block tw-mt-2 tw-text-sm tw-font-medium tw-underline hover:tw-opacity-75"
+            >Explore</a
+          >
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Arrow Right -->
+    <button
+      x-show="hover && showRight"
+      x-transition.opacity.duration.200ms
+      @click="scrollBy(1)"
+      type="button"
+      class="tw-absolute tw-right-2 tw-top-1/2 -tw-translate-y-1/2 tw-z-10 tw-w-10 tw-h-10 tw-bg-white/80 tw-text-black tw-rounded tw-flex tw-items-center tw-justify-center hover:tw-bg-white tw-transition"
+    >
+      &#8594;
+    </button>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Creators",
+  "settings": [
+    {
+      "type": "collection_list",
+      "id": "featured_collections",
+      "label": "Featured Collections",
+      "limit": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Creators",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
