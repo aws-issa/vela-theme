@@ -27,7 +27,7 @@
   @mouseleave="hover = false"
   class="tw-relative tw-py-12"
 >
-  <h2 class="tw-text-3xl tw-font-bold tw-mb-6 tw-pl-8">Featured Creators</h2>
+  <h2 class="tw-font-bold tw-mb-6 tw-pl-12">Featured Creators</h2>
 
   <div class="tw-relative">
     <!-- Arrow Left -->
@@ -45,25 +45,25 @@
     <div
       x-ref="track"
       @scroll="update()"
-      class="tw-flex tw-overflow-x-auto tw-scroll-smooth tw-snap-x tw-gap-0 tw-px-[2px]"
+      class="tw-flex tw-overflow-x-auto tw-scroll-smooth tw-snap-x tw-gap-0 tw-pl-8 tw-pr-8 scrollbar-hide"
     >
       {% for collection in section.settings.featured_collections %}
-        <div class="creator-card tw-shrink-0 tw-w-[300px] tw-mr-4 tw-snap-start tw-text-center">
+        <div class="creator-card tw-shrink-0 tw-w-[500px] tw-snap-start tw-mr-8 last:tw-mr-0 tw-text-left tw-flex tw-flex-col tw-px-4">
           {% if collection.image %}
             <a href="{{ collection.url }}">
               <img
                 src="{{ collection.image | image_url: width: 600 }}"
                 alt="{{ collection.title }}"
-                width="600"
-                height="600"
+                width="500"
+                height="500"
                 class="tw-aspect-square tw-object-cover tw-rounded"
               >
             </a>
           {% endif %}
-          <h3 class="tw-font-semibold tw-mt-3">{{ collection.title }}</h3>
+          <h3 class="tw-text-3xl tw-font-bold">{{ collection.title }}</h3>
           <a
             href="{{ collection.url }}"
-            class="tw-inline-block tw-mt-2 tw-text-sm tw-font-medium tw-underline hover:tw-opacity-75"
+            class="tw-inline-block tw-mt-4 tw-text-2xl tw-font-bold tw-uppercase tw-underline tw-text-[rgb(1,70,72)] hover:tw-opacity-75"
             >Explore</a
           >
         </div>

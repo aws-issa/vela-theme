@@ -107,6 +107,10 @@
   margin-top: 0.75rem
 }
 
+.tw-mr-8 {
+  margin-right: 2rem
+}
+
 .tw-inline-block {
   display: inline-block
 }
@@ -167,6 +171,10 @@
   width: 300px
 }
 
+.tw-w-\[500px\] {
+  width: 500px
+}
+
 .tw-max-w-md {
   max-width: 28rem
 }
@@ -222,6 +230,10 @@
 
 .tw-gap-0 {
   gap: 0px
+}
+
+.tw-gap-8 {
+  gap: 2rem
 }
 
 .tw-space-y-4 > :not([hidden]) ~ :not([hidden]) {
@@ -353,6 +365,18 @@
   padding-left: 2rem
 }
 
+.tw-pr-8 {
+  padding-right: 2rem
+}
+
+.tw-pl-10 {
+  padding-left: 2.5rem
+}
+
+.tw-pl-12 {
+  padding-left: 3rem
+}
+
 .tw-text-left {
   text-align: left
 }
@@ -405,6 +429,11 @@
   line-height: 1.25rem
 }
 
+.tw-text-base {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
 .tw-font-extrabold {
   font-weight: 800
 }
@@ -421,6 +450,10 @@
   font-weight: 500
 }
 
+.tw-uppercase {
+  text-transform: uppercase
+}
+
 .tw-leading-relaxed {
   line-height: 1.625
 }
@@ -433,6 +466,11 @@
 .tw-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.tw-text-\[rgb\(1\,70\,72\)\] {
+  --tw-text-opacity: 1;
+  color: rgb(1 70 72 / var(--tw-text-opacity))
 }
 
 .tw-underline {
@@ -499,6 +537,10 @@
 
 .tw-ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+.last\:tw-mr-0:last-child {
+  margin-right: 0px
 }
 
 .hover\:tw-bg-green-800:hover {
