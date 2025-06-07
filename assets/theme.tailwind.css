@@ -264,6 +264,16 @@
   padding-bottom: 0.75rem
 }
 
+.tw-px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem
+}
+
+.tw-px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem
+}
+
 .tw-pl-\[2px\] {
   padding-left: 2px
 }
@@ -286,6 +296,10 @@
 
 .tw-pl-2 {
   padding-left: 0.5rem
+}
+
+.tw-pl-4 {
+  padding-left: 1rem
 }
 
 .tw-text-left {

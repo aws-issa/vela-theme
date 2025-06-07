@@ -62,15 +62,17 @@
         <div class="image-with-text__text-item grid__item">
           <div
             id="ImageWithText--{{ section.id }}"
+            style="padding-left: 120px;"
             class="image-with-text__content image-with-text__content--{{ section.settings.desktop_content_position }} image-with-text__content--desktop-{{ section.settings.desktop_content_alignment }} image-with-text__content--mobile-{{ section.settings.mobile_content_alignment }} image-with-text__content--{{ section.settings.height }} content-container{% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme }}{% else %} background-transparent{% endunless %}"
           >
             {%- for block in section.blocks -%}
               {% case block.type %}
                 {%- when 'heading' -%}
-                  <h6 class="image-with-text__text--caption tw-pl-2">NEWEST CREATOR</h6>
+                  <h6 class="image-with-text__text--caption tw-pl-2" style="font-size: 16px;">NEWEST CREATOR</h6>
                   <h1
                     class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
                     {{ block.shopify_attributes }}
+                    style="font-size: 65px; font-weight: 700;"
                   >
                     {{ block.settings.heading }}
                   </h1>
@@ -95,6 +97,7 @@
                       {% endif %}
                       class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
                       {{ block.shopify_attributes }}
+                      style="background-color: rgb(1, 70, 72); color: rgb(215, 235, 95);"
                     >
                       {{ block.settings.button_label | escape }}
                     </a>
