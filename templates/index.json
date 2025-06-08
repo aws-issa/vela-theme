@@ -255,9 +255,7 @@
     },
     "special_newsletter_rEegdL": {
       "type": "special-newsletter",
-      "custom_css": [
-        "{text-align: center}"
-      ],
+      "custom_css": [],
       "name": "Special Newsletter",
       "settings": {
         "image": "shopify://shop_images/markus-winkler-aId-xYRTlEc-unsplash.webp",
