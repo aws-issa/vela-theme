@@ -450,9 +450,18 @@
   border-width: 1px
 }
 
+.tw-border-b-2 {
+  border-bottom-width: 2px
+}
+
 .tw-border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity))
+}
+
+.tw-border-\[rgb\(1\,70\,72\)\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(1 70 72 / var(--tw-border-opacity))
 }
 
 .tw-bg-green-700 {

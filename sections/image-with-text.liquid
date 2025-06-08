@@ -90,6 +90,33 @@
                   <div class="image-with-text__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
                     {{ block.settings.text }}
                   </div>
+                {%- when 'links' -%}
+                  <div class="tw-flex tw-gap-8 tw-justify-center tw-mt-4">
+                    {% if block.settings.link1_text %}
+                      <a
+                        href="{{ block.settings.link1_url }}"
+                        class="tw-text-xl tw-font-bold tw-font-grotesque tw-text-[rgb(1,70,72)] tw-uppercase tw-border-b-2 tw-border-[rgb(1,70,72)]"
+                      >
+                        {{ block.settings.link1_text }}
+                      </a>
+                    {% endif %}
+                    {% if block.settings.link2_text %}
+                      <a
+                        href="{{ block.settings.link2_url }}"
+                        class="tw-text-xl tw-font-bold tw-font-grotesque tw-text-[rgb(1,70,72)] tw-uppercase tw-border-b-2 tw-border-[rgb(1,70,72)]"
+                      >
+                        {{ block.settings.link2_text }}
+                      </a>
+                    {% endif %}
+                    {% if block.settings.link3_text %}
+                      <a
+                        href="{{ block.settings.link3_url }}"
+                        class="tw-text-xl tw-font-bold tw-font-grotesque tw-text-[rgb(1,70,72)] tw-uppercase tw-border-b-2 tw-border-[rgb(1,70,72)]"
+                      >
+                        {{ block.settings.link3_text }}
+                      </a>
+                    {% endif %}
+                  </div>
                 {%- when 'button' -%}
                   {%- if block.settings.button_label != blank -%}
                     <a
@@ -461,6 +488,18 @@
       ]
     },
     {
+      "type": "links",
+      "name": "Text Links",
+      "settings": [
+        { "type": "text", "id": "link1_text", "label": "Link 1 Text", "default": "INSTAGRAM" },
+        { "type": "url", "id": "link1_url", "label": "Link 1 URL" },
+        { "type": "text", "id": "link2_text", "label": "Link 2 Text", "default": "TIKTOK" },
+        { "type": "url", "id": "link2_url", "label": "Link 2 URL" },
+        { "type": "text", "id": "link3_text", "label": "Link 3 Text", "default": "YOUTUBE" },
+        { "type": "url", "id": "link3_url", "label": "Link 3 URL" }
+      ]
+    },
+    {
       "type": "button",
       "name": "t:sections.image-with-text.blocks.button.name",
       "limit": 1,
@@ -491,15 +530,10 @@
       "name": "t:sections.image-with-text.presets.name",
       "blocks": [
         { "type": "intro" },
-        {
-          "type": "heading"
-        },
-        {
-          "type": "text"
-        },
-        {
-          "type": "button"
-        }
+        { "type": "heading" },
+        { "type": "text" },
+        { "type": "links" },
+        { "type": "button" }
       ]
     }
   ]
