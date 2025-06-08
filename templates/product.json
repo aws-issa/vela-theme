@@ -75,124 +75,6 @@
         "padding_bottom": 12
       }
     },
-    "image_banner_dcy8Qh": {
-      "type": "image-banner",
-      "settings": {
-        "my_video_background_banner": "",
-        "image": "shopify://shop_images/ChatGPT_Image_May_29_2025_11_53_50_AM.png",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "",
-        "stack_images_on_mobile": true,
-        "mobile_content_alignment": "center",
-        "show_text_below": true
-      }
-    },
-    "image_with_text_ptfmq6": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_KbQdMm": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>Recipes</strong>",
-            "heading_size": "h1"
-          }
-        },
-        "text_wpQrBR": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Discover simple and tasty oat recipes for versatile and delicious meals. Unlock the culinary potential of this ancient grain with our favorite recipes.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_gPTQrq": {
-          "type": "button",
-          "settings": {
-            "button_label": "Recipes",
-            "button_link": "shopify://blogs/recipes",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_KbQdMm",
-        "text_wpQrBR",
-        "button_gPTQrq"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/IMG_7930.jpg",
-        "height": "medium",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn_YnhLk8": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_x9qBJH": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "<p>★★★★★</p><p>\"From creamy breakfasts to baking and smoothies — Oatopia changed how I see oats. It’s comfort food, but better.\"</p><p><br/><strong>Jason Murrell</strong></p><p><em>Director of Grocery for Jimbo's</em></p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_aqrbqh": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "<p>★★★★★</p><p>\"There’s nothing artificial here. Just real oats, real ingredients, and a real difference I can feel in my energy.\"</p><p><br/><strong>Bonsinetto</strong></p><p><em>CEO of Farm to Fork Experiences</em></p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_WUTePm": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "<p>★★★★★</p><p>\"Rich, smooth, and satisfying — I use Oatopia’s oat milk in everything. It’s the only one I’ll buy now.\"</p><p><br/><strong> Manolo Reybaltar</strong></p><p><em>World Sailing 470 Class Champion (20</em>23)</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_x9qBJH",
-        "column_aqrbqh",
-        "column_WUTePm"
-      ],
-      "settings": {
-        "title": "<strong>What Revivals said?</strong>",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "button_filled": true,
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "primary",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -214,9 +96,6 @@
   },
   "order": [
     "main",
-    "image_banner_dcy8Qh",
-    "image_with_text_ptfmq6",
-    "multicolumn_YnhLk8",
     "related-products"
   ]
 }
