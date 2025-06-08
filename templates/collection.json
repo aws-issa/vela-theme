@@ -42,22 +42,13 @@
             "link3_text": "YOUTUBE",
             "link3_url": ""
           }
-        },
-        "button_iLcGMP": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
-          }
         }
       },
       "block_order": [
         "intro_mqWiFm",
         "heading_YPyDz4",
         "text_Exn9qk",
-        "links_3JMCrh",
-        "button_iLcGMP"
+        "links_3JMCrh"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
