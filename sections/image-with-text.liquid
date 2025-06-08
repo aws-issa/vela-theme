@@ -35,7 +35,22 @@
               style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
             {% endif %}
           >
-            {%- if collection and collection.image != blank -%}
+            {%- assign creator_collection = null -%}
+            {%- if product -%}
+              {%- for coll in product.collections -%}
+                {%- if coll.metafields.custom.collection_type.value == 'Creator' -%}
+                  {%- assign creator_collection = coll -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+            {%- if product and creator_collection and creator_collection.image != blank -%}
+              {{
+                creator_collection.image
+                | image_url: width: 1500
+                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
+              }}
+            {%- elsif collection and collection.image != blank -%}
               {{
                 collection.image
                 | image_url: width: 1500
@@ -70,7 +85,9 @@
                     {{ block.shopify_attributes }}
                     style="font-size: 65px; font-weight: 700;"
                   >
-                    {% if collection %}
+                    {% if product and creator_collection %}
+                      {{ creator_collection.title }}
+                    {% elsif collection %}
                       {{ collection.title }}
                     {% else %}
                       {{ block.settings.heading }}
@@ -81,7 +98,9 @@
                     class="image-with-text__text image-with-text__text--caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }} {{ block.settings.text_style }}"
                     {{ block.shopify_attributes }}
                   >
-                    {% if collection %}
+                    {% if product and creator_collection %}
+                      {{ creator_collection.description }}
+                    {% elsif collection %}
                       {{ collection.description }}
                     {% else %}
                       {{ block.settings.caption | escape }}
@@ -121,7 +140,9 @@
                 {%- when 'button' -%}
                   {%- if block.settings.button_label != blank -%}
                     <a
-                      {% if block.settings.button_link == blank %}
+                      {% if product and creator_collection %}
+                        href="{{ creator_collection.url }}"
+                      {% elsif block.settings.button_link == blank %}
                         role="link" aria-disabled="true"
                       {% else %}
                         href="{{ block.settings.button_link }}"
