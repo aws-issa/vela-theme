@@ -302,13 +302,22 @@
             "author": "Mary M",
             "subtitle": "Verified Customer"
           }
+        },
+        "testimonial_ttxgdP": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Love supporting whatever crazy ideas John and Hank have to decrease world suck. The stuff is always great quality and attractively designed",
+            "author": "Lauren D.",
+            "subtitle": "Verified Customer"
+          }
         }
       },
       "block_order": [
         "testimonial_9dXDQe",
         "testimonial_BmnVCN",
         "testimonial_PAz7R4",
-        "testimonial_ihxEkJ"
+        "testimonial_ihxEkJ",
+        "testimonial_ttxgdP"
       ],
       "name": "Featured Testimonials",
       "settings": {
