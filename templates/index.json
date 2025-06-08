@@ -267,6 +267,44 @@
         "success_message": "Thanks for signing up!",
         "legal_note": "This site is protected by hCaptcha and the hCaptcha Privacy Policy and Terms of Service apply."
       }
+    },
+    "featured_testimonials_WaXaA6": {
+      "type": "featured-testimonials",
+      "blocks": {
+        "testimonial_9dXDQe": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Not only does DFTBA support an amazing cause, but the products are way beyond my wildest dreams in terms of both creativity and quality. I can’t recommend it enough and I think my friends may be sick of hearing me tell them about it. Great news though: that never stops me.",
+            "author": "Victoria B.",
+            "subtitle": "Verified Customer"
+          }
+        },
+        "testimonial_BmnVCN": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Wonderful products, amazing cause. I love supporting the shows.",
+            "author": "Emma T.",
+            "subtitle": "Verified Customer"
+          }
+        },
+        "testimonial_PAz7R4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Wonderful products, amazing cause. I love supporting the shows.",
+            "author": "Emma T.",
+            "subtitle": "Verified Customer"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_9dXDQe",
+        "testimonial_BmnVCN",
+        "testimonial_PAz7R4"
+      ],
+      "name": "Featured Testimonials",
+      "settings": {
+        "heading": "What Our Customers Are Saying"
+      }
     }
   },
   "order": [
@@ -276,6 +314,7 @@
     "image_with_text_mefeRL",
     "featured_creators_78TNRE",
     "featured_items_aT8gbE",
-    "special_newsletter_rEegdL"
+    "special_newsletter_rEegdL",
+    "featured_testimonials_WaXaA6"
   ]
 }
