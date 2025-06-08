@@ -55,6 +55,11 @@
   margin-bottom: auto
 }
 
+.tw-my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem
+}
+
 .tw-mr-0 {
   margin-right: 0px
 }
@@ -111,6 +116,10 @@
   margin-right: 2rem
 }
 
+.tw-mt-1 {
+  margin-top: 0.25rem
+}
+
 .tw-inline-block {
   display: inline-block
 }
@@ -125,6 +134,10 @@
 
 .tw-aspect-square {
   aspect-ratio: 1 / 1
+}
+
+.tw-aspect-\[16\/9\] {
+  aspect-ratio: 16/9
 }
 
 .tw-h-12 {
@@ -177,6 +190,10 @@
 
 .tw-max-w-md {
   max-width: 28rem
+}
+
+.tw-max-w-none {
+  max-width: none
 }
 
 .tw-flex-shrink-0 {
@@ -272,6 +289,10 @@
   border-radius: 0.125rem
 }
 
+.tw-rounded-lg {
+  border-radius: 0.5rem
+}
+
 .tw-bg-green-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(21 128 61 / var(--tw-bg-opacity))
@@ -284,6 +305,10 @@
 
 .tw-bg-white\/80 {
   background-color: rgb(255 255 255 / 0.8)
+}
+
+.tw-bg-black\/30 {
+  background-color: rgb(0 0 0 / 0.3)
 }
 
 .tw-bg-opacity-80 {
@@ -301,6 +326,10 @@
 .tw-object-cover {
   -o-object-fit: cover;
      object-fit: cover
+}
+
+.tw-p-6 {
+  padding: 1.5rem
 }
 
 .tw-px-6 {
@@ -458,6 +487,10 @@
   line-height: 1.625
 }
 
+.tw-tracking-widest {
+  letter-spacing: 0.1em
+}
+
 .tw-text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity))
@@ -505,6 +538,12 @@
 .tw-drop-shadow-lg {
   --tw-drop-shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+.tw-backdrop-blur-sm {
+  --tw-backdrop-blur: blur(4px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
 }
 
 .tw-transition {
@@ -570,6 +609,10 @@
 }
 
 @media (min-width: 768px) {
+  .md\:tw-w-1\/2 {
+    width: 50%
+  }
+
   .md\:tw-text-5xl {
     font-size: 3rem;
     line-height: 1
