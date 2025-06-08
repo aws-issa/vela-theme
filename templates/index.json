@@ -253,38 +253,21 @@
       "name": "Featured Items (2-up)",
       "settings": {}
     },
-    "newsletter_NyHRMr": {
-      "type": "newsletter",
-      "blocks": {
-        "heading_7VT4fd": {
-          "type": "heading",
-          "settings": {
-            "heading": "Subscribe to our emails",
-            "heading_size": "h1"
-          }
-        },
-        "paragraph_B9J7GQ": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
-          }
-        },
-        "email_form_B3Tk7J": {
-          "type": "email_form",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading_7VT4fd",
-        "paragraph_B9J7GQ",
-        "email_form_B3Tk7J"
+    "special_newsletter_rEegdL": {
+      "type": "special-newsletter",
+      "custom_css": [
+        "{text-align: center}"
       ],
-      "name": "t:sections.newsletter.presets.name",
+      "name": "Special Newsletter",
       "settings": {
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "image": "shopify://shop_images/markus-winkler-aId-xYRTlEc-unsplash.webp",
+        "bg_color": "#e6f5b9",
+        "subheading": "SUBSCRIBE TO OUR NEWSLETTER",
+        "heading": "Be the first to know!",
+        "body": "Get the latest updates from your favorite creators plus product launches, limited‑run merch, sales, and events happening soon!",
+        "button_label": "JOIN",
+        "success_message": "Thanks for signing up!",
+        "legal_note": "This site is protected by hCaptcha and the hCaptcha Privacy Policy and Terms of Service apply."
       }
     }
   },
@@ -295,6 +278,6 @@
     "image_with_text_mefeRL",
     "featured_creators_78TNRE",
     "featured_items_aT8gbE",
-    "newsletter_NyHRMr"
+    "special_newsletter_rEegdL"
   ]
 }
