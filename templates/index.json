@@ -227,6 +227,31 @@
           "kitchen-utility"
         ]
       }
+    },
+    "featured_items_aT8gbE": {
+      "type": "featured-items",
+      "blocks": {
+        "item_KVFrtP": {
+          "type": "item",
+          "settings": {
+            "product": "frame-gilded-decor",
+            "short_description": ""
+          }
+        },
+        "item_3b9LUw": {
+          "type": "item",
+          "settings": {
+            "product": "stool-craft-utility",
+            "short_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_KVFrtP",
+        "item_3b9LUw"
+      ],
+      "name": "Featured Items (2-up)",
+      "settings": {}
     }
   },
   "order": [
@@ -234,6 +259,7 @@
     "rich_text_9Vtg9z",
     "featured_collection_zdVt8m",
     "image_with_text_mefeRL",
-    "featured_creators_78TNRE"
+    "featured_creators_78TNRE",
+    "featured_items_aT8gbE"
   ]
 }
