@@ -294,12 +294,21 @@
             "author": "Mary M.",
             "subtitle": "Verified Customer"
           }
+        },
+        "testimonial_ihxEkJ": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Love what VELA stands for and how much it does for the world and community",
+            "author": "Mary M",
+            "subtitle": "Verified Customer"
+          }
         }
       },
       "block_order": [
         "testimonial_9dXDQe",
         "testimonial_BmnVCN",
-        "testimonial_PAz7R4"
+        "testimonial_PAz7R4",
+        "testimonial_ihxEkJ"
       ],
       "name": "Featured Testimonials",
       "settings": {
