@@ -67,8 +67,11 @@
           >
             {%- for block in section.blocks -%}
               {% case block.type %}
+                {%- when 'intro' -%}
+                  <h6 class="image-with-text__text--caption tw-pl-2" style="font-size: 16px;">
+                    {{ block.settings.intro_text }}
+                  </h6>
                 {%- when 'heading' -%}
-                  <h6 class="image-with-text__text--caption tw-pl-2" style="font-size: 16px;">NEWEST CREATOR</h6>
                   <h1
                     class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
                     {{ block.shopify_attributes }}
@@ -327,6 +330,18 @@
   ],
   "blocks": [
     {
+      "type": "intro",
+      "name": "Intro Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "intro_text",
+          "label": "Intro Text",
+          "default": "NEWEST CREATOR"
+        }
+      ]
+    },
+    {
       "type": "heading",
       "name": "t:sections.image-with-text.blocks.heading.name",
       "limit": 1,
@@ -475,6 +490,7 @@
     {
       "name": "t:sections.image-with-text.presets.name",
       "blocks": [
+        { "type": "intro" },
         {
           "type": "heading"
         },
