@@ -5,15 +5,15 @@
 {% endcomment %}
 
 <section class="newsletter-special">
-  <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-0">
+  <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-0 tw-h-[480px]">
     {%- comment -%} LEFT COLUMN – IMAGE {%- endcomment -%}
     <div class="newsletter-special__image">
       {%- if section.settings.image != blank -%}
         <img
-          src="{{ section.settings.image | image_url: width: 1200 }}"
+          src="{{ section.settings.image | image_url: width: 800 }}"
           alt="{{ section.settings.image.alt | escape }}"
-          width="1200"
-          height="800"
+          width="800"
+          height="400"
           class="tw-w-full tw-h-full tw-object-cover"
         >
       {%- else -%}
@@ -23,23 +23,23 @@
 
     {%- comment -%} RIGHT COLUMN – SIGNUP PANEL {%- endcomment -%}
     <div
-      class="newsletter-special__content tw-flex tw-flex-col tw-justify-center tw-items-center md:tw-items-start tw-p-10"
+      class="newsletter-special__content tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center tw-p-8 tw-h-full"
       style="background-color: {{ section.settings.bg_color }};"
     >
       {%- if section.settings.subheading != blank -%}
-        <p class="tw-uppercase tw-text-sm tw-font-semibold tw-tracking-wider tw-text-[rgb(1,70,72)]">
+        <p class="tw-uppercase tw-text-lg md:tw-text-xl tw-tracking-wider tw-text-[rgb(1,70,72)] tw-font-grotesque">
           {{ section.settings.subheading }}
         </p>
       {%- endif -%}
 
       {%- if section.settings.heading != blank -%}
-        <h2 class="tw-text-3xl md:tw-text-4xl tw-font-bold tw-mt-2 tw-text-[rgb(1,70,72)]">
+        <h2 class="tw-text-5xl md:tw-text-6xl tw-font-bold tw-mt-2 tw-text-[rgb(1,70,72)] tw-font-grotesque">
           {{ section.settings.heading }}
         </h2>
       {%- endif -%}
 
       {%- if section.settings.body != blank -%}
-        <p class="tw-mt-4 tw-mb-6 tw-text-lg tw-max-w-xl tw-text-[rgb(1,70,72)]">
+        <p class="tw-mt-2 tw-mb-6 tw-text-2xl tw-max-w-4xl tw-text-[rgb(1,70,72)] tw-font-grotesque">
           {{ section.settings.body }}
         </p>
       {%- endif -%}
@@ -52,12 +52,12 @@
             type="email"
             name="contact[email]"
             class="tw-flex-grow tw-p-3 tw-border tw-border-gray-300 tw-rounded-l-md focus:tw-outline-none"
-            placeholder="Email address"
+            placeholder="Email"
             required
           >
           <button
             type="submit"
-            class="tw-bg-[rgb(1,70,72)] tw-text-white tw-px-6 tw-rounded-r-md tw-font-bold hover:tw-opacity-90"
+            class="tw-bg-[rgb(1,70,72)] tw-text-white tw-px-6 tw-rounded-r-md tw-font-bold tw-text-2xl hover:tw-opacity-90 tw-font-grotesque"
           >
             {{ section.settings.button_label }}
           </button>
@@ -66,12 +66,14 @@
         {%- if form.errors -%}
           <p class="tw-text-red-600 tw-mt-2">{{ form.errors.messages.email }}</p>
         {%- elsif form.posted_successfully? -%}
-          <p class="tw-mt-2 tw-text-[rgb(1,70,72)] tw-font-semibold">{{ section.settings.success_message }}</p>
+          <p class="tw-mt-2 tw-text-[rgb(1,70,72)] tw-font-semibold tw-text-xl tw-font-grotesque">
+            {{ section.settings.success_message }}
+          </p>
         {%- endif -%}
       {%- endform -%}
 
       {%- if section.settings.legal_note != blank -%}
-        <p class="tw-mt-6 tw-text-xs tw-text-[rgb(1,70,72)] tw-max-w-md">
+        <p class="tw-mt-6 tw-text-base md:tw-text-lg tw-text-[rgb(1,70,72)] tw-max-w-md tw-font-grotesque">
           {{ section.settings.legal_note }}
         </p>
       {%- endif -%}

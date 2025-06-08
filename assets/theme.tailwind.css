@@ -172,6 +172,26 @@
   height: 100%
 }
 
+.tw-h-\[500px\] {
+  height: 500px
+}
+
+.tw-h-\[480px\] {
+  height: 480px
+}
+
+.tw-h-\[2--px\] {
+  height: 2--px
+}
+
+.tw-h-\[200px\] {
+  height: 200px
+}
+
+.tw-h-\[400px\] {
+  height: 400px
+}
+
 .tw-w-12 {
   width: 3rem
 }
@@ -214,6 +234,26 @@
 
 .tw-max-w-xl {
   max-width: 36rem
+}
+
+.tw-max-w-10 {
+  max-width: 2.5rem
+}
+
+.tw-max-w-40 {
+  max-width: 10rem
+}
+
+.tw-max-w-2xl {
+  max-width: 42rem
+}
+
+.tw-max-w-3xl {
+  max-width: 48rem
+}
+
+.tw-max-w-4xl {
+  max-width: 56rem
 }
 
 .tw-flex-shrink-0 {
@@ -265,6 +305,10 @@
   align-items: center
 }
 
+.tw-justify-start {
+  justify-content: flex-start
+}
+
 .tw-justify-center {
   justify-content: center
 }
@@ -291,6 +335,10 @@
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
+}
+
+.tw-self-start {
+  align-self: flex-start
 }
 
 .tw-self-center {
@@ -399,6 +447,10 @@
 
 .tw-p-3 {
   padding: 0.75rem
+}
+
+.tw-p-16 {
+  padding: 4rem
 }
 
 .tw-px-6 {
@@ -748,5 +800,15 @@
   .md\:tw-text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem
+  }
+
+  .md\:tw-text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem
+  }
+
+  .md\:tw-text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem
   }
 }
