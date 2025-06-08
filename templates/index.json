@@ -169,6 +169,12 @@
     "image_with_text_mefeRL": {
       "type": "image-with-text",
       "blocks": {
+        "intro_JiP9dC": {
+          "type": "intro",
+          "settings": {
+            "intro_text": "NEWEST CREATOR"
+          }
+        },
         "heading_wPRdRM": {
           "type": "heading",
           "settings": {
@@ -193,6 +199,7 @@
         }
       },
       "block_order": [
+        "intro_JiP9dC",
         "heading_wPRdRM",
         "text_xXWqkE",
         "button_Pc6cpT"
