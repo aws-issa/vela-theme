@@ -20,9 +20,17 @@
   }
 {%- endstyle -%}
 
+<style>
+  /* Center product titles and prices within this section */
+  .related-products .card__heading,
+  .related-products .price {
+    text-align: center !important;
+  }
+</style>
+
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <product-recommendations
-    class="related-products page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    class="related-products tw-w-full section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
     data-section-id="{{ section.id }}"
     data-product-id="{{ product.id }}"
@@ -31,32 +39,103 @@
       <h2 class="title related-products__heading inline-richtext {{ section.settings.heading_size }}">
         {{ section.settings.heading }}
       </h2>
-      <ul
-        class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
-        role="list"
+      <div
+        x-data="relatedProductsCarousel()"
+        x-init="init()"
+        class="relative tw-overflow-visible tw-w-full section-{{ section.id }}-padding"
       >
-        {% assign skip_card_product_styles = false %}
-        {% for recommendation in recommendations.products %}
-          <li class="grid__item">
-            {% render 'card-product',
-              card_product: recommendation,
-              media_aspect_ratio: section.settings.image_ratio,
-              image_shape: section.settings.image_shape,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              skip_styles: skip_card_product_styles
-            %}
-          </li>
-          {%- assign skip_card_product_styles = true -%}
-        {% endfor %}
-      </ul>
+        <div
+          x-ref="track"
+          class="tw-flex tw-space-x-0 tw-overflow-x-auto tw-scroll-smooth tw-scrollbar-hide tw-scrollbar-none"
+          style="-ms-overflow-style: none; scrollbar-width: none; [&::-webkit-scrollbar]:hidden;"
+        >
+          {% assign skip_styles = false %}
+          {% for recommendation in recommendations.products %}
+            <div
+              class="tw-flex-shrink-0 tw-w-1/2 md:tw-w-1/4"
+              role="group"
+            >
+              {% comment %} Pass creator_name to the card via render arguments {% endcomment %}
+              {% assign creator_name = '' %}
+              {% for coll in recommendation.collections %}
+                {% if coll.metafields.custom.collection_type.value == 'Creator' %}
+                  {% assign creator_name = coll.title %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+              {% render 'card-product',
+                card_product: recommendation,
+                media_aspect_ratio: section.settings.image_ratio,
+                image_shape: section.settings.image_shape,
+                show_secondary_image: section.settings.show_secondary_image,
+                show_vendor: section.settings.show_vendor,
+                show_rating: section.settings.show_rating,
+                skip_styles: skip_styles,
+                creator_name: creator_name
+              %}
+            </div>
+            {% assign skip_styles = true %}
+          {% endfor %}
+        </div>
+        <button
+          x-ref="prevBtn"
+          @click="scrollPrev"
+          class="tw-hidden md:tw-flex tw-items-center tw-justify-center tw-absolute tw-top-1/2 tw-left-0 -tw-translate-y-1/2 tw-bg-white tw-rounded-full tw-w-10 tw-h-10 tw-text-[rgb(1,70,72)] tw-shadow-md hover:tw-bg-gray-100 focus:tw-outline-none"
+          aria-label="Previous products"
+          :class="{ 'tw-opacity-0 tw-pointer-events-none': atStart }"
+        >
+          ‹
+        </button>
+        <button
+          x-ref="nextBtn"
+          @click="scrollNext"
+          class="tw-hidden md:tw-flex tw-items-center tw-justify-center tw-absolute tw-top-1/2 tw-right-0 -tw-translate-y-1/2 tw-bg-white tw-rounded-full tw-w-10 tw-h-10 tw-text-[rgb(1,70,72)] tw-shadow-md hover:tw-bg-gray-100 focus:tw-outline-none"
+          aria-label="Next products"
+          :class="{ 'tw-opacity-0 tw-pointer-events-none': atEnd }"
+        >
+          ›
+        </button>
+      </div>
     {% endif %}
   </product-recommendations>
   {% if section.settings.image_shape == 'arch' %}
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
 </div>
+
+<script>
+  function relatedProductsCarousel() {
+    return {
+      atStart: true,
+      atEnd: false,
+      track: null,
+      init() {
+        this.track = this.$refs.track;
+        this.updateArrows();
+        this.track.addEventListener('scroll', () => this.updateArrows());
+        window.addEventListener('resize', () => this.updateArrows());
+      },
+      scrollNext() {
+        const cardWidth =
+          this.track.querySelector('[role="group"]').offsetWidth +
+          parseFloat(getComputedStyle(this.track).columnGap || '24');
+        this.track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      },
+      scrollPrev() {
+        const cardWidth =
+          this.track.querySelector('[role="group"]').offsetWidth +
+          parseFloat(getComputedStyle(this.track).columnGap || '24');
+        this.track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      },
+      updateArrows() {
+        const scrollLeft = this.track.scrollLeft;
+        const maxScroll = this.track.scrollWidth - this.track.clientWidth - 1;
+        this.atStart = scrollLeft <= 0;
+        this.atEnd = scrollLeft >= maxScroll;
+      },
+    };
+  }
+</script>
 
 {% schema %}
 {
