@@ -1,5 +1,44 @@
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+<style>
+  .utility-bar.color-{{ section.settings.color_scheme }} {
+    background-color: rgb(163, 220, 220) !important;
+    padding-top: 0.2rem !important;
+    padding-bottom: 0.1rem !important;
+    overflow: hidden !important;
+    color: rgb(1, 70, 72) !important;
+    border-bottom: 1px solid rgb(1, 70, 72) !important;
+  }
+  .utility-bar .announcement-bar__message,
+  .utility-bar .announcement-bar__message span {
+    color: rgb(1, 70, 72) !important;
+    font-size: 1.25rem !important;
+  }
+  .utility-bar .announcement-bar__message {
+    font-weight: normal !important;
+  }
+  .utility-bar .announcement-bar__message span {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 18s linear infinite;
+  }
+  @keyframes scroll-left {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* Ensure the announcement wrapper hides overflow */
+  .utility-bar .announcement-bar {
+    overflow: hidden !important;
+  }
+
+  /* Adjust message line-height to fit the bar */
+  .utility-bar .announcement-bar__message,
+  .utility-bar .announcement-bar__message span {
+    line-height: 1.5rem !important;
+    font-size: 1.25rem !important;
+  }
+</style>
 
 {%- liquid
   assign social_icons = true
@@ -39,7 +78,7 @@
               class="announcement-bar__link link link--text focus-inset animate-arrow"
             >
           {%- endif -%}
-          <p class="announcement-bar__message h5">
+          <p class="announcement-bar__message">
             <span>{{ section.blocks.first.settings.text | escape }}</span>
             {%- if section.blocks.first.settings.link != blank -%}
               {{- 'icon-arrow.svg' | inline_asset_content -}}
@@ -99,7 +138,7 @@
                         class="announcement-bar__link link link--text focus-inset animate-arrow"
                       >
                     {%- endif -%}
-                    <p class="announcement-bar__message h5">
+                    <p class="announcement-bar__message">
                       <span>{{ block.settings.text | escape }}</span>
                       {%- if block.settings.link != blank -%}
                         {{- 'icon-arrow.svg' | inline_asset_content -}}
@@ -186,13 +225,13 @@
       "unit": "s",
       "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
       "default": 5
-    },    
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-4"
-    },  
+    },
     {
       "type": "checkbox",
       "id": "show_line_separator",
@@ -205,8 +244,8 @@
     },
     {
       "type": "paragraph",
-         "content": "t:sections.announcement-bar.settings.paragraph.content"
-    },             
+      "content": "t:sections.announcement-bar.settings.paragraph.content"
+    },
     {
       "type": "checkbox",
       "id": "show_social",

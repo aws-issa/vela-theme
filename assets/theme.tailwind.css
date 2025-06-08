@@ -157,6 +157,14 @@
   margin-bottom: 4rem
 }
 
+.tw-ml-\[230px\] {
+  margin-left: 230px
+}
+
+.tw-ml-\[200px\] {
+  margin-left: 200px
+}
+
 .tw-box-border {
   box-sizing: border-box
 }
