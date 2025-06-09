@@ -1,139 +1,291 @@
-{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+<style>
+  .custom-contact {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 32px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: system-ui, sans-serif;
   }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
+  .custom-contact__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 16px;
   }
-{%- endstyle -%}
+  .custom-contact__divider {
+    border-top: 1px solid #e5e7eb;
+    margin: 0 0 24px;
+  }
+  .custom-contact__field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+  .custom-contact__label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 8px;
+  }
+  .custom-contact__asterisk {
+    color: #dc2626;
+    margin-left: 4px;
+  }
+  .custom-contact__input,
+  .custom-contact__select,
+  .custom-contact__textarea {
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+  }
+  .custom-contact__textarea {
+    min-height: 160px;
+    resize: vertical;
+  }
+  .custom-contact__file-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border: 1px dashed #d1d5db;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #111827;
+    margin-bottom: 8px;
+  }
+  .custom-contact__file-label svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    fill: #1f2937;
+  }
+  .custom-contact__help {
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+  .custom-contact__button {
+    text-align: center;
+    margin-top: 16px;
+  }
+  .custom-contact__button button {
+    width: 100%;
+    padding: 16px;
+    background-color: #111827;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .custom-contact__note {
+    font-size: 14px;
+    color: #6b7280;
+    text-align: center;
+    margin-top: 24px;
+  }
+  .custom-contact__file-list {
+    margin-top: 12px;
+  }
+  .custom-contact__file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  .custom-contact__file-name {
+    flex: 1;
+    margin-right: 12px;
+    color: #111827;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .custom-contact__file-status {
+    display: flex;
+    align-items: center;
+    color: #10b981;
+  }
+  .custom-contact__file-status svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    fill: #10b981;
+  }
+  .custom-contact__file-remove {
+    background: none;
+    border: none;
+    font-size: 16px;
+    line-height: 1;
+    color: #6b7280;
+    cursor: pointer;
+    margin-left: 12px;
+  }
+</style>
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
-    {%- if section.settings.heading != blank -%}
-      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-        {{ section.settings.heading }}
-      </h2>
-    {%- else -%}
-      <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
-    {%- endif -%}
-    {%- liquid
-      assign contact_form_class = 'isolate'
-      if settings.animations_reveal_on_scroll
-        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
-      endif
-    -%}
-    {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
-      {%- if form.posted_successfully? -%}
-        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
-          {{- 'icon-success.svg' | inline_asset_content -}}
-          {{ 'templates.contact.form.post_success' | t }}
-        </h2>
-      {%- elsif form.errors -%}
-        <div class="form__message">
-          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
-            {{- 'icon-error.svg' | inline_asset_content -}}
-            {{ 'templates.contact.form.error_heading' | t }}
-          </h2>
-        </div>
-        <ul class="form-status-list caption-large" role="list">
-          <li>
-            <a href="#ContactForm-email" class="link">
-              {{ form.errors.translated_fields.email | capitalize }}
-              {{ form.errors.messages.email }}
-            </a>
-          </li>
-        </ul>
-      {%- endif -%}
-      <div class="contact__fields">
-        <div class="field">
-          <input
-            class="field__input"
-            autocomplete="name"
-            type="text"
-            id="ContactForm-name"
-            name="contact[{{ 'templates.contact.form.name' | t }}]"
-            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-            placeholder="{{ 'templates.contact.form.name' | t }}"
-          >
-          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
-        </div>
-        <div class="field field--with-error">
-          <input
-            autocomplete="email"
-            type="email"
-            id="ContactForm-email"
-            class="field__input"
-            name="contact[email]"
-            spellcheck="false"
-            autocapitalize="off"
-            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-            aria-required="true"
-            {% if form.errors contains 'email' %}
-              aria-invalid="true"
-              aria-describedby="ContactForm-email-error"
-            {% endif %}
-            placeholder="{{ 'templates.contact.form.email' | t }}"
-          >
-          <label class="field__label" for="ContactForm-email">
-            {{- 'templates.contact.form.email' | t }}
-            <span aria-hidden="true">*</span></label
-          >
-          {%- if form.errors contains 'email' -%}
-            <small class="contact__field-error" id="ContactForm-email-error">
-              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
-              <span class="form__message">
-                <span class="svg-wrapper">
-                  {{- 'icon-error.svg' | inline_asset_content -}}
-                </span>
-                {{- form.errors.translated_fields.email | capitalize }}
-                {{ form.errors.messages.email -}}
-              </span>
-            </small>
-          {%- endif -%}
-        </div>
-      </div>
-      <div class="field">
-        <input
-          type="tel"
-          id="ContactForm-phone"
-          class="field__input"
-          autocomplete="tel"
-          name="contact[{{ 'templates.contact.form.phone' | t }}]"
-          pattern="[0-9\-]*"
-          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-          placeholder="{{ 'templates.contact.form.phone' | t }}"
-        >
-        <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
-      </div>
-      <div class="field">
-        <textarea
-          rows="10"
-          id="ContactForm-body"
-          class="text-area field__input"
-          name="contact[{{ 'templates.contact.form.comment' | t }}]"
-          placeholder="{{ 'templates.contact.form.comment' | t }}"
-        >
-          {{- form.body -}}
-        </textarea>
-        <label class="form__label field__label" for="ContactForm-body">
-          {{- 'templates.contact.form.comment' | t -}}
-        </label>
-      </div>
-      <div class="contact__button">
-        <button type="submit" class="button">
-          {{ 'templates.contact.form.send' | t }}
-        </button>
-      </div>
-    {%- endform -%}
-  </div>
+<div class="custom-contact">
+  <h2 class="custom-contact__title">Contact us</h2>
+  <hr class="custom-contact__divider">
+  <form
+    method="post"
+    action="/contact#ContactForm"
+    id="ContactForm"
+    enctype="multipart/form-data"
+    class="custom-contact__form"
+  >
+    <!-- Full name -->
+    <div class="custom-contact__field">
+      <label for="ContactForm-name" class="custom-contact__label">
+        Full name<span class="custom-contact__asterisk">*</span>
+      </label>
+      <input
+        id="ContactForm-name"
+        name="contact[Full name]"
+        type="text"
+        required
+        class="custom-contact__input"
+        placeholder="Enter your full name"
+        value="{% if form.name %}{{ form.name }}{% endif %}"
+      >
+    </div>
+
+    <!-- Email -->
+    <div class="custom-contact__field">
+      <label for="ContactForm-email" class="custom-contact__label">
+        Email<span class="custom-contact__asterisk">*</span>
+      </label>
+      <input
+        id="ContactForm-email"
+        name="contact[email]"
+        type="email"
+        required
+        class="custom-contact__input"
+        placeholder="your@email.com"
+        value="{% if form.email %}{{ form.email }}{% endif %}"
+      >
+    </div>
+
+    <!-- Subject -->
+    <div class="custom-contact__field">
+      <label for="ContactForm-subject" class="custom-contact__label">
+        Subject<span class="custom-contact__asterisk">*</span>
+      </label>
+      <select id="ContactForm-subject" name="contact[Subject]" required class="custom-contact__select">
+        <option value="" disabled selected>Select a subject</option>
+        <option>General Inquiry</option>
+        <option>Order Issue</option>
+        <option>Product Question</option>
+      </select>
+    </div>
+
+    <!-- Message -->
+    <div class="custom-contact__field">
+      <label for="ContactForm-body" class="custom-contact__label">
+        Message<span class="custom-contact__asterisk">*</span>
+      </label>
+      <textarea
+        id="ContactForm-body"
+        name="contact[Message]"
+        required
+        class="custom-contact__textarea"
+        placeholder="Write your message..."
+      >{{ form.body }}</textarea>
+    </div>
+
+    <!-- Attach Files -->
+    <div class="custom-contact__field">
+      <input id="ContactForm-files" name="contact[Attachments][]" type="file" multiple hidden>
+      <label for="ContactForm-files" class="custom-contact__file-label">
+        {{ 'icon-attach.svg' | inline_asset_content }}
+        Attach Files
+      </label>
+      <p class="custom-contact__help">Attach up to 10 files. The maximum allowed size per file is 20 MB.</p>
+      <div id="ContactForm-file-list" class="custom-contact__file-list"></div>
+    </div>
+
+    <!-- Submit -->
+    <div class="custom-contact__button">
+      <button type="submit">Send</button>
+    </div>
+
+    <!-- Notice -->
+    <p class="custom-contact__note">
+      This site is protected by reCAPTCHA Enterprise and the Google
+      <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>
+      and
+      <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a>
+      apply.
+    </p>
+  </form>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var fileInput = document.getElementById('ContactForm-files');
+    var fileList = document.getElementById('ContactForm-file-list');
+    var fileArray = [];
+    fileInput.addEventListener('change', function (event) {
+      // Merge new files into fileArray, avoiding duplicates by name
+      Array.from(event.target.files).forEach(function (file) {
+        if (
+          !fileArray.some(function (f) {
+            return f.name === file.name;
+          })
+        ) {
+          fileArray.push(file);
+        }
+      });
+      // Re-render list
+      fileList.innerHTML = '';
+      fileArray.forEach(function (file) {
+        var item = document.createElement('div');
+        item.className = 'custom-contact__file-item';
+        item.innerHTML =
+          '<span class="custom-contact__file-name">' +
+          file.name +
+          '</span>' +
+          '<span class="custom-contact__file-status">' +
+          '<svg viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.707a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>' +
+          'Uploaded - 100%' +
+          '</span>' +
+          '<button type="button" class="custom-contact__file-remove">&times;</button>';
+        fileList.appendChild(item);
+        // Remove logic
+        var removeBtn = item.querySelector('.custom-contact__file-remove');
+        removeBtn.addEventListener('click', function () {
+          // Remove from fileArray
+          fileArray = fileArray.filter(function (f) {
+            return f.name !== file.name;
+          });
+          // Update input.files
+          var dt = new DataTransfer();
+          fileArray.forEach(function (f) {
+            dt.items.add(f);
+          });
+          fileInput.files = dt.files;
+          // Remove from UI
+          item.remove();
+        });
+      });
+      // Update input.files with full array on initial load
+      var dt = new DataTransfer();
+      fileArray.forEach(function (f) {
+        dt.items.add(f);
+      });
+      fileInput.files = dt.files;
+    });
+  });
+</script>
 
 {% schema %}
 {
