@@ -49,21 +49,23 @@
                   </ul>
                 </div>
 
-                <div class="mega-menu__column mega-menu__column--feature">
-                  {% assign featured_collection = collections['were-here'] %}
-                  {% if featured_collection %}
-                    <a href="{{ featured_collection.url }}">
-                      <img
-                        src="{{ featured_collection.featured_image | image_url: width: 400 }}"
-                        alt="{{ featured_collection.title | escape }}"
-                        class="mega-menu__image"
-                        width="400"
-                        height="400"
-                      >
-                      <p class="mega-menu__caption">{{ featured_collection.title }}</p>
+                {% assign featured_handle = section.settings.mega_menu_featured_collection %}
+                {% assign featured_collection = collections[featured_handle] %}
+                {% if featured_collection %}
+                  <div
+                    class="mega-menu__column mega-menu__column--feature"
+                    style="background-image: url('{{ featured_collection.featured_image | image_url: width: 400 }}'); background-size: cover; background-position: center;"
+                  >
+                    <a href="{{ featured_collection.url }}" class="mega-menu__feature-link">
+                      <div class="mega-menu__feature-overlay">
+                        <h3 class="mega-menu__feature-title">{{ featured_collection.title }}</h3>
+                        {% if section.settings.mega_menu_featured_subtitle != blank %}
+                          <p class="mega-menu__feature-subtitle">{{ section.settings.mega_menu_featured_subtitle }}</p>
+                        {% endif %}
+                      </div>
                     </a>
-                  {% endif %}
-                </div>
+                  </div>
+                {% endif %}
               </div>
             </details>
           </header-menu>
