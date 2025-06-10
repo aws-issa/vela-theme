@@ -9,7 +9,7 @@
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
       {%- if link.title == 'Shop' -%}
-        <li>
+        <li style="padding-bottom: 16px; padding-top: 16px;">
           <header-menu>
             <details id="Details-HeaderMenu-Shop" class="mega-menu">
               <summary
@@ -72,7 +72,7 @@
           </header-menu>
         </li>
       {%- else -%}
-        <li>
+        <li style="padding-bottom: 16px; padding-top: 16px;">
           {%- if link.links != blank -%}
             <header-menu>
               <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
@@ -252,3 +252,32 @@
     border-left: 1px solid #e1e1e1;
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var nav = document.querySelector('.header__inline-menu');
+    if (!nav) return;
+    var menus = nav.querySelectorAll('.mega-menu');
+    menus.forEach(function (menu) {
+      var summary = menu.querySelector('summary');
+      var content = menu.querySelector('.mega-menu__content');
+      // Open when hovering over the title or the content area
+      if (summary) {
+        summary.addEventListener('mouseenter', function () {
+          menu.setAttribute('open', '');
+        });
+      }
+      if (content) {
+        content.addEventListener('mouseenter', function () {
+          menu.setAttribute('open', '');
+        });
+      }
+    });
+    // Close all menus when leaving the entire header navigation
+    nav.addEventListener('mouseleave', function () {
+      menus.forEach(function (menu) {
+        menu.removeAttribute('open');
+      });
+    });
+  });
+</script>
