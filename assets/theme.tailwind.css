@@ -446,6 +446,10 @@
   padding: 2rem
 }
 
+.tw-p-0 {
+  padding: 0px
+}
+
 .tw-px-4 {
   padding-left: 1rem;
   padding-right: 1rem

@@ -20,8 +20,9 @@
               </summary>
               <div
                 id="MegaMenu-Content-Shop"
-                class="mega-menu__content mega-menu__content--3col page-width gradient motion-reduce global-settings-popup"
+                class="mega-menu__content mega-menu__content--3col gradient motion-reduce global-settings-popup"
                 tabindex="-1"
+                style="padding: 0;"
               >
                 <div class="mega-menu__column">
                   <p class="mega-menu__heading">Shop by Creator</p>
@@ -58,7 +59,7 @@
                   >
                     <a href="{{ featured_collection.url }}" class="mega-menu__feature-link">
                       <div class="mega-menu__feature-overlay">
-                        <h3 class="mega-menu__feature-title">{{ featured_collection.title }}</h3>
+                        <h2 class="mega-menu__feature-title">{{ featured_collection.title }}</h2>
                         {% if section.settings.mega_menu_featured_subtitle != blank %}
                           <p class="mega-menu__feature-subtitle">{{ section.settings.mega_menu_featured_subtitle }}</p>
                         {% endif %}
@@ -89,7 +90,7 @@
                 </summary>
                 <div
                   id="MegaMenu-Content-{{ forloop.index }}"
-                  class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                  class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup tw-p-0"
                   tabindex="-1"
                 >
                   <ul
@@ -174,7 +175,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
-    padding: 32px 40px;
     background-color: #ffffff;
     border-top: 1px solid #e1e1e1;
     border-bottom: 1px solid #e1e1e1;
@@ -209,6 +209,8 @@
   /* Featured image column */
   .mega-menu__column--feature {
     text-align: right;
+    padding: 0;
+    position: relative;
   }
 
   /* Featured collection image */
@@ -220,10 +222,33 @@
     margin-bottom: 12px;
   }
 
-  /* Caption under featured image */
-  .mega-menu__caption {
-    font-size: 14px;
-    color: #34403c;
+  /* Column-specific padding */
+  .mega-menu__column {
+    padding: 32px 40px;
+  }
+  /* Overlay positioning for featured image text */
+  .mega-menu__feature-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 16px;
+  }
+
+  /* White text and Grotesque font */
+  .mega-menu__feature-title,
+  .mega-menu__feature-subtitle {
+    color: #ffffff;
+    font-family: 'Grotesque', sans-serif;
     margin: 0;
+    text-align: left;
+  }
+
+  .mega-menu__feature-subtitle {
+    font-size: 14px;
+  }
+
+  /* Vertical separators between columns */
+  .mega-menu__content--3col .mega-menu__column:not(:first-child) {
+    border-left: 1px solid #e1e1e1;
   }
 </style>
